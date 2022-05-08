@@ -24,9 +24,9 @@
 
 package cl.ucn.disc.pdis.fivet.orm;
 
-import com.j256.ormlite.field.types.BaseDataType;
 import com.j256.ormlite.field.FieldType;
 import com.j256.ormlite.field.SqlType;
+import com.j256.ormlite.field.types.BaseDataType;
 import com.j256.ormlite.support.DatabaseResults;
 import lombok.extern.slf4j.Slf4j;
 
@@ -41,12 +41,12 @@ import java.time.format.DateTimeFormatter;
  */
 
 @Slf4j
-public final class ZonedDateTime extends BaseDatabaseType {
+public final class ZonedDateTimeType extends BaseDataType {
 
     /**
      * Singleton!
      */
-    public static final ZonedDateTime INSTANCE = new ZonedDateTime();
+    public static final ZonedDateTimeType INSTANCE = new ZonedDateTimeType();
 
     /**
      * The formatter (ZonedDateTime -- String)
@@ -63,7 +63,7 @@ public final class ZonedDateTime extends BaseDatabaseType {
      * The private constructor
      */
     private ZonedDateTimeType() {
-        super(SqlType.STRING, new Class<?>[]{ZonedDateTime.class});
+        super(SqlType.STRING, new Class<?>[]{ZonedDateTimeType.class});
 
     }
 
@@ -75,20 +75,21 @@ public final class ZonedDateTime extends BaseDatabaseType {
         return DEFAULT_WIDTH;
     }
     /**
-     * Convert a default string object and return the appropiate argument to a SQL insert or update statement
+     * Convert a default string object and return the appropriate argument to a SQL insert or update statement
      */
     @Override
-    public Object parseDefaultString(FieldType fieldtype, String defaultStr) {
-        log.debug("parseDefaultString: {} -> {}", fieldtype, defaultStr);
-        return DTF.format(zdt);
+    public Object parseDefaultString(FieldType fieldtype, String defaultStr){
+        log.debug("parseDefaultString: {}", fieldtype, defaultStr);
+        return defaultStr;
     }
+
     /**
      * The Java to SQL converter
      */
     @Override
     public Object javaToSqlArg(FieldType fieldType, Object javaObject) {
         ZonedDateTime zdt = (ZonedDateTime) javaObject;
-        if(zdt == null) return null;
+        if (zdt == null) return null;
         return DTF.format(zdt);
     }
     /**
@@ -104,9 +105,8 @@ public final class ZonedDateTime extends BaseDatabaseType {
      */
     @Override
     public Object sqlArgToJava(FieldType fieldType, Object sqlArg, int columnPos) {
-        if(sqlArg == null) return null;
+        if (sqlArg == null) return null;
         return ZonedDateTime.parse((String) sqlArg, DTF);
     }
-
 
 }

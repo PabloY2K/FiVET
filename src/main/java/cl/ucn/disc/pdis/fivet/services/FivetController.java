@@ -22,46 +22,33 @@
  * SOFTWARE.
  */
 
-package cl.ucn.disc.pdis.fivet.model;
-
-import cl.ucn.disc.pdis.fivet.orm.BaseEntity;
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
-import lombok.*;
-
+package cl.ucn.disc.pdis.fivet.services;
+import cl.ucn.disc.pdis.fivet.model.Persona;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 /**
- * The Persona.
+ * The Fivet Controller interfase
  */
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
-@DatabaseTable(tableName = "persona")
-public final class Persona extends BaseEntity {
 
-    /**
-     * The Rut.
-     */
-    @Getter
-    @DatabaseField(unique = true, canBeNull = false)
-    private String rut;
+public interface FivetController {
+        /**
+         *
+         * @param login The login account
+         * @param password The password of the user
+         * @return a persona
+         */
+        Persona autenticar(String login, String password) {
+            /**
+             * add a Persona to the backend
+             * @param persona to add
+             * @param password to hash
+             */
+            @Override
+            public void Add(Persona persona, String password) {
+                persona.setPassword(BCrypt.hashpw(password, BCrypt.gensalt(12)));
+                this.daoPersona.save(persona);
+            }
 
-    /** The Nombre.
-     */
-    @Getter
-    @DatabaseField(canBeNull = false)
-    private String nombre;
-    /**
-     * The Email.
-     */
-    @Getter
-    @DatabaseField(unique = true, canBeNull = false)
-    private String email;
-    /**
-     * The Password.
-     */
 
-    @Getter
-    @Setter
-    @DatabaseField(canBeNull = false)
-    private String password;
+        }
+    }
 }

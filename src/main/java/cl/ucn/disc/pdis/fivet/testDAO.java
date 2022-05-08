@@ -92,7 +92,8 @@ public class testDAO {
                     .theBoolean(Boolean.TRUE)
                     .build();
             dao.save(theEntityA);
-            log.debug("To db: {}", ToStringBuilder.reflectionToString(theEntityA, ToStringStyle.MULTI_LINE_STYLE));
+            log.debug("To db: {}",
+                    ToStringBuilder.reflectionToString(theEntityA, ToStringStyle.MULTI_LINE_STYLE));
 
             TheEntity theEntityB = TheEntity.builder()
                     .theString("The String B")
@@ -101,7 +102,8 @@ public class testDAO {
                     .theBoolean(Boolean.FALSE)
                     .build();
             dao.save(theEntityB);
-            log.debug("To db: {}", ToStringBuilder.reflectionToString(theEntityA, ToStringStyle.MULTI_LINE_STYLE));
+            log.debug("To db: {}",
+                    ToStringBuilder.reflectionToString(theEntityA, ToStringStyle.MULTI_LINE_STYLE));
         }
         //Retrieve ..
         log.debug("Retrieving ..");
@@ -149,7 +151,7 @@ public class testDAO {
          */
         @Getter
         @DatabaseField(canBeNull = false)
-        private Double theInteger;
+        private Integer theInteger;
 
         /**
          * The Double.

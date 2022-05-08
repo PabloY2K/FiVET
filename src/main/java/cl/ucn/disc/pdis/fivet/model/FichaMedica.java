@@ -23,45 +23,71 @@
  */
 
 package cl.ucn.disc.pdis.fivet.model;
-
 import cl.ucn.disc.pdis.fivet.orm.BaseEntity;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import java.time.ZonedDateTime;
 
 /**
- * The Persona.
+ * The Ficha Medica Class
  */
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@DatabaseTable(tableName = "persona")
-public final class Persona extends BaseEntity {
+@DatabaseTable(tableName="fichaMedica")
+public final class FichaMedica extends BaseEntity {
 
     /**
-     * The Rut.
+     * The Number of the Ficha
      */
     @Getter
-    @DatabaseField(unique = true, canBeNull = false)
-    private String rut;
-
-    /** The Nombre.
+    @DatabaseField(canBeNull = false, unique = true)
+    private Integer numeroFicha;
+    /**
+     * The Name of the Paciente
      */
     @Getter
     @DatabaseField(canBeNull = false)
-    private String nombre;
+    private String nombrePaciente;
     /**
-     * The Email.
+     * The Species of the Paciente
      */
     @Getter
-    @DatabaseField(unique = true, canBeNull = false)
-    private String email;
-    /**
-     * The Password.
-     */
-
-    @Getter
-    @Setter
     @DatabaseField(canBeNull = false)
-    private String password;
+    private String especiePaciente;
+    /**
+     * The Birthday of the Paciente
+     */
+    @Getter
+    @DatabaseField(canBeNull = false)
+    private ZonedDateTime fechaNacimiento;
+    /**
+     * The Race of the Paciente
+     */
+    @Getter
+    @DatabaseField(canBeNull = false)
+    private String razaPaciente;
+    /**
+     * The Sex of the Paciente
+     */
+    @Getter
+    @DatabaseField(canBeNull = false)
+    private String sexoPaciente;
+    /**
+     * The Color of the Paciente
+     */
+    @Getter
+    @DatabaseField(canBeNull = false)
+    private String colorPaciente;
+    /**
+     * The Type of the Paciente
+     */
+    @Getter
+    @DatabaseField(canBeNull = false)
+    private String tipoPaciente;
 }

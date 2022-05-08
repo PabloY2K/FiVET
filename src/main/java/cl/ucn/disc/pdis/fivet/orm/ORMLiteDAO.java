@@ -24,6 +24,7 @@
 
 package cl.ucn.disc.pdis.fivet.orm;
 
+import com.google.common.collect.Lists;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.support.ConnectionSource;
@@ -31,6 +32,7 @@ import lombok.NonNull;
 import lombok.SneakyThrows;
 
 import java.sql.SQLException;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,7 +41,7 @@ import java.util.Optional;
  *
  * @author lrojas
  */
-public final class ORMLiteDAO <T extends BaseEntity> implements DAO<T>{
+public final class ORMLiteDAO <T extends BaseEntity> implements DAO<T> {
 
     /**
      * The real DAO (connection to ORMLite DAO)
@@ -70,9 +72,28 @@ public final class ORMLiteDAO <T extends BaseEntity> implements DAO<T>{
     public Optional<T> get(final Integer id) {
         // Exec the SQL
         T t = theDAO.queryForId(id);
-        return t == null ? Optional.empty() : Optional.of(t);
+        if (t == null) {
+            return Optional.empty();
+        }
+        if (t.getDeletedAt() != null) {
+            return Optional.empty();
+        }
+        return Optional.of(t);
 
     }
+    @SneakyThrows(SQLException.class)
+    @Override
+    public Optional<T> get(String attrib, Object value) {
+        List<T> list = this.theDAO.queryForEq(attrib, value);
+        for (T t : list) {
+            if(t.getDeletedAt() == null) {
+                return Optional.of(t);
+            }
+
+        }
+        return Optional.empty();
+    }
+
 
     /**
      * Get all the Ts.
@@ -80,7 +101,14 @@ public final class ORMLiteDAO <T extends BaseEntity> implements DAO<T>{
     @SneakyThrows(SQLException.class)
     @Override
     public List<T> getAll() {
-        return this.theDAO.queryForAll();
+        List<T> list = Lists.newArrayList();
+
+        for (T t : this.theDAO.queryForAll()) {
+            if(t.getDeletedAt() == null) {
+                list.add(t);
+            }
+        }
+        return list;
     }
 
     /**
@@ -94,7 +122,7 @@ public final class ORMLiteDAO <T extends BaseEntity> implements DAO<T>{
 
         int created = this.theDAO.create(t);
 
-        if (created != 1){
+        if (created != 1) {
             throw new SQLException("Rows created =! 1");
         }
 
@@ -108,9 +136,19 @@ public final class ORMLiteDAO <T extends BaseEntity> implements DAO<T>{
     @SneakyThrows(SQLException.class)
     @Override
     public void delete(Integer id) {
+        Optional<T> t = this.get(id);
+        if (t.isEmpty()) {
+            log.warn("Entity t {} not found", id);
+            return;
+        }
+        t.get().deletedAt = ZonedDateTime.now();
+        t.deleted = ZonedDateTime.now();
+        int deleted = this.theDAO.update(t);
+        if(deleted != 1) {
+            throw new SQLException("Rows updated != 1");
+        }
 
         int deleted = this.theDAO.deleteById(id);
-
         if (deleted != 1){
             throw new SQLException("Rows deleted != 1");
         }
@@ -125,6 +163,12 @@ public final class ORMLiteDAO <T extends BaseEntity> implements DAO<T>{
     @Override
     public void delete(T t) {
         this.delete(t.getId());
+        t.deletedAt = ZonedDateTime.now();
+        int deleted = this.theDAO.update(t);
+
+        if (deleted !=1) {
+            throw new SQLException("Rows updated != 1");
+        }
     }
 }
 
