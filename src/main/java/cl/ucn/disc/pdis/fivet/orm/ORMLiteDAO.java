@@ -30,6 +30,7 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.support.ConnectionSource;
 import lombok.NonNull;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 
 import java.sql.SQLException;
 import java.time.ZonedDateTime;
@@ -39,8 +40,9 @@ import java.util.Optional;
 /**
  * The ORMLite implementation of DAO.
  *
- * @author lrojas
+ * @author pablo
  */
+@Slf4j
 public final class ORMLiteDAO <T extends BaseEntity> implements DAO<T> {
 
     /**
@@ -131,43 +133,48 @@ public final class ORMLiteDAO <T extends BaseEntity> implements DAO<T> {
     /**
      * Delete a T.
      *
-     * @param id of t to delete.
+     * @param t to delete
      */
     @SneakyThrows(SQLException.class)
     @Override
-    public void delete(Integer id) {
-        Optional<T> t = this.get(id);
-        if (t.isEmpty()) {
-            log.warn("Entity t {} not found", id);
-            return;
-        }
-        t.get().deletedAt = ZonedDateTime.now();
-        t.deleted = ZonedDateTime.now();
-        int deleted = this.theDAO.update(t);
-        if(deleted != 1) {
-            throw new SQLException("Rows updated != 1");
-        }
+    public void delete(T t) {
+        boolean exist = this.theDAO.idExists(t.getId());
 
-        int deleted = this.theDAO.deleteById(id);
-        if (deleted != 1){
-            throw new SQLException("Rows deleted != 1");
+        if (!exist) {
+            log.warn("T object not found");
+        } else {
+            t.deletedAt = ZonedDateTime.now();
+            if (this.theDAO.update(t) != 1) {
+                throw new SQLException("Rows updated != 1");
+            }
         }
     }
 
     /**
      * Delete a T.
      *
-     * @param t to delete;
+     * @param id to delete
      */
-    //@SneakyThrows(SQLException.class)
+    @SneakyThrows(SQLException.class)
     @Override
-    public void delete(T t) {
-        this.delete(t.getId());
-        t.deletedAt = ZonedDateTime.now();
-        int deleted = this.theDAO.update(t);
+    public void delete(final Integer id) {
 
-        if (deleted !=1) {
-            throw new SQLException("Rows updated != 1");
+        boolean exist = this.theDAO.idExists(id);
+
+        if (!exist) {
+            throw new SQLException("The entity with id: {} not exists.", String.valueOf(id));
+        } else {
+            Optional<T> t = this.get(id);
+
+            if (t.isEmpty()) {
+                log.warn("Entity t with id: {} not found", id);
+                return;
+            }
+
+            t.get().deletedAt = ZonedDateTime.now();
+            if (this.theDAO.update(t.get()) != 1) {
+                throw new SQLException("Rows updated != 1");
+            }
         }
     }
 }

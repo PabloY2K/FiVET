@@ -39,9 +39,9 @@ dependencies {
     testCompileOnly 'org.projectlombok:lombok:1.18.22'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
 
-    //Logger
+    // Logger
     testImplementation 'org.slf4j:slf4j-api:1.7.36'
-    testImplementation'ch.qos.logback:logback-classic:1.2.11'
+    testImplementation 'ch.qos.logback:logback-classic:1.2.11'
 
     //Lombok
     compileOnly 'org.projectlombok:lombok:1.18.22'
@@ -72,7 +72,10 @@ dependencies {
 
     //Bcrypt implementation
     implementation 'org.springframework.security:spring-security-crypto:5.6.3'
+    runtimeOnly 'org.bouncycastle:bcprov-jdk15on:1.70'
+    runtimeOnly 'org.springframework:spring-jcl:5.3.19'
 }
+
 protobuf {
     protoc {
         artifact = 'com.google.protobuf:protoc:3.20.0'
@@ -82,6 +85,7 @@ protobuf {
             artifact = 'io.grpc:protoc-gen-grpc-java:1.45.1'
         }
     }
+
     generateProtoTasks {
         all()*.plugins {
             grpc {}
@@ -97,7 +101,6 @@ sourceSets {
         }
     }
 }
-
 test {
     useJUnitPlatform()
 }

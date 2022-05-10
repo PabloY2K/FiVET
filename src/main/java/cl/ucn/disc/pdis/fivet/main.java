@@ -51,7 +51,8 @@ public final class main {
         Persona persona = new Persona(
                 "20056208-9",
                 "Pablo Herrera",
-                "pablo.herrera@alumnos.ucn.cl"
+                "pablo.herrera@alumnos.ucn.cl",
+                "contraseña123"
         );
 
         // Save the Persona

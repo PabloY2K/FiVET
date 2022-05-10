@@ -25,30 +25,26 @@
 package cl.ucn.disc.pdis.fivet.services;
 import cl.ucn.disc.pdis.fivet.model.Persona;
 import org.springframework.security.crypto.bcrypt.BCrypt;
+
+import java.util.Optional;
+
 /**
  * The Fivet Controller interfase
  */
 
 public interface FivetController {
-        /**
-         *
-         * @param login The login account
-         * @param password The password of the user
-         * @return a persona
-         */
-        Persona autenticar(String login, String password) {
-            /**
-             * add a Persona to the backend
-             * @param persona to add
-             * @param password to hash
-             */
-            @Override
-            public void Add(Persona persona, String password) {
-                persona.setPassword(BCrypt.hashpw(password, BCrypt.gensalt(12)));
-                this.daoPersona.save(persona);
-            }
+    /**
+     * autenticar method
+     * @param login rut or email to login
+     * @param password to login
+     * @return a Persona
+     */
+    Optional<Persona> autenticar(String login, String password);
 
-
-        }
-    }
+    /**
+     * Add a Persona into the backend
+     * @param persona to add
+     * @param password to hash
+     */
+    void add(Persona persona, String password);
 }

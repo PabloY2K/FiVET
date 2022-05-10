@@ -30,7 +30,7 @@ import java.util.Optional;
 
 /**
  * Data Access Object: DAO
- * @author lrojas
+ * @author pablo
  */
 public interface DAO <T extends BaseEntity> {
 
@@ -38,6 +38,14 @@ public interface DAO <T extends BaseEntity> {
      * Get optional T.
      */
     Optional<T> get(Integer id);
+
+    /**
+     *  Optional T with attribute and value
+     * @param attrib
+     * @param value
+     * @return optional T
+     */
+    Optional<T> get(String attrib, Object value);
 
     /**
      * Get all of the Ts.
@@ -61,6 +69,7 @@ public interface DAO <T extends BaseEntity> {
      * @param id of the t to delete;
      */
     void delete(Integer id);
+
 
 }
 

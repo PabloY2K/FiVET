@@ -79,7 +79,7 @@ public final class ZonedDateTimeType extends BaseDataType {
      */
     @Override
     public Object parseDefaultString(FieldType fieldtype, String defaultStr){
-        log.debug("parseDefaultString: {}", fieldtype, defaultStr);
+        log.debug("parseDefaultString: {} -> {}", fieldtype, defaultStr);
         return defaultStr;
     }
 
