@@ -24,6 +24,7 @@
 
 package cl.ucn.disc.pdis.fivet.services;
 
+import cl.ucn.disc.pdis.fivet.model.FichaMedica;
 import cl.ucn.disc.pdis.fivet.model.Persona;
 import cl.ucn.disc.pdis.fivet.orm.DAO;
 import cl.ucn.disc.pdis.fivet.orm.ORMLiteDAO;
@@ -103,5 +104,8 @@ import java.util.Optional;
             //Save the Persona
             this.daoPersona.save(persona);
         }
-    }
+
+
+        }
+
 
