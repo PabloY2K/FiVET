@@ -25,13 +25,17 @@
 package cl.ucn.disc.pdis.fivet.model;
 import cl.ucn.disc.pdis.fivet.orm.BaseEntity;
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.ZonedDateTime;
+import java.util.Collection;
 
 /**
  * The Ficha Medica Class
@@ -65,19 +69,14 @@ public final class FichaMedica extends BaseEntity {
      */
     @Getter
     @DatabaseField(canBeNull = false)
-    private ZonedDateTime fechaNacimiento;
+    private LocalDate fechaNacimiento;
     /**
      * The Race of the Paciente
      */
     @Getter
     @DatabaseField(canBeNull = false)
     private String razaPaciente;
-    /**
-     * The Sex of the Paciente
-     */
-    @Getter
-    @DatabaseField(canBeNull = false)
-    private String sexoPaciente;
+
     /**
      * The Color of the Paciente
      */
@@ -90,4 +89,37 @@ public final class FichaMedica extends BaseEntity {
     @Getter
     @DatabaseField(canBeNull = false)
     private String tipoPaciente;
+    /**
+     * The Options of Sexo for the Paciente
+     */
+    public enum Sexo {
+        MACHO,
+        HEMBRA
+    }
+    /**
+     * The Sexo of the Paciente
+     */
+    @Getter
+    @DatabaseField(canBeNull = false)
+    private Sexo sexo;
+    /**
+     * The Duenio of the Paciente
+     */
+    @Getter
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "persona_id")
+    private Persona duenio;
+    /**
+     * The Controles.
+     */
+    @Getter
+    @ForeignCollectionField(eager = true, orderColumnName = "fecha")
+    private Collection<Control> controles;
+    /**
+     * Append a Control
+     *
+     * @param control to append
+     */
+    public void add(Control control) {
+        this.controles.add(control);
+    }
 }

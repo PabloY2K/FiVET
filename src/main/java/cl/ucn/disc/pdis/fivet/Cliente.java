@@ -61,7 +61,7 @@ public final class Cliente {
 
             log.debug("Persona: {}", persona);
         } catch (StatusRuntimeException e) {
-            log.warn(("RPC Failed: {},", e.getStatus());
+            log.warn("RPC Failed: {}", e.getStatus());
         }
         log.debug("Done.");
     }

@@ -27,48 +27,65 @@ package cl.ucn.disc.pdis.fivet.model;
 import cl.ucn.disc.pdis.fivet.orm.BaseEntity;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import java.time.ZonedDateTime;
 
 /**
- * The Persona.
+ * The Control
+ *
+ * @author pablo
  */
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-@DatabaseTable(tableName = "persona")
-public final class Persona extends BaseEntity {
+@DatabaseTable
+public final class Control extends BaseEntity {
 
     /**
-     * The Rut.
-     */
-    @Getter
-    @DatabaseField(unique = true, canBeNull = false)
-    private String rut;
-
-    /** The Nombre.
+     * The Fecha
      */
     @Getter
     @DatabaseField(canBeNull = false)
-    private String nombre;
+    private ZonedDateTime fecha;
     /**
-     * The Email.
+     *The Temperatura
      */
     @Getter
-    @DatabaseField(unique = true, canBeNull = false)
-    private String email;
-    /**
-     * The Password.
-     */
-
-    @Getter
-    @Setter
     @DatabaseField(canBeNull = false)
-    private String password;
+    private Double temperatura;
     /**
-     * The Direccion.
+     * The Peso
      */
     @Getter
-    @DatabaseField(canBeNull = true)
-    private String direccion;
+    @DatabaseField(canBeNull = false)
+    private Double peso;
+    /**
+     * The Altura.
+     */
+    @Getter
+    @DatabaseField(canBeNull = false)
+    private Double altura;
+    /**
+     * The Diagnostico.
+     */
+    @Getter
+    @DatabaseField(canBeNull = false)
+    private String dignostico;
+    /**
+     * The Veterinario
+     */
+    @Getter
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "veterinario_id", canBeNull = false)
+    private Persona veterinario;
+    /**
+     * The Ficha Medica
+     */
+    @Getter
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "fichamedica_id")
+    private FichaMedica fichaMedica;
 
 }

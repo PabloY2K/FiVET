@@ -71,5 +71,6 @@ public interface DAO <T extends BaseEntity> {
     void delete(Integer id);
 
 
+    void dropAndCreateTable();
 }
 

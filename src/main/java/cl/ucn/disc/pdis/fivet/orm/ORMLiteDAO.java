@@ -27,6 +27,7 @@ package cl.ucn.disc.pdis.fivet.orm;
 import com.google.common.collect.Lists;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
+import com.j256.ormlite.field.DataPersisterManager;
 import com.j256.ormlite.support.ConnectionSource;
 import lombok.NonNull;
 import lombok.SneakyThrows;
@@ -44,7 +45,6 @@ import java.util.Optional;
  */
 @Slf4j
 public final class ORMLiteDAO <T extends BaseEntity> implements DAO<T> {
-
     /**
      * The real DAO (connection to ORMLite DAO)
      */
