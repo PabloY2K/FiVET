@@ -25,7 +25,10 @@
 package cl.ucn.disc.pdis.fivet.orm;
 
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.ZonedDateTime;
 
@@ -34,6 +37,9 @@ import java.time.ZonedDateTime;
  *
  * @author pablo
  */
+@NoArgsConstructor
+@AllArgsConstructor
+@DatabaseTable
 public abstract class BaseEntity {
 
     /**

@@ -28,7 +28,9 @@ import com.google.common.collect.Lists;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.field.DataPersisterManager;
+import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
+import com.j256.ormlite.table.TableUtils;
 import lombok.NonNull;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -50,9 +52,12 @@ public final class ORMLiteDAO <T extends BaseEntity> implements DAO<T> {
      */
     private final Dao<T, Integer> theDAO;
 
+    private static ConnectionSource cs;
+
     /**
      * The Constructor of ORMLiteDAO.
-     * @param cs the connection to the database.
+     *
+     * @param cs    the connection to the database.
      * @param clazz the type of T.
      */
     @SneakyThrows(SQLException.class)
@@ -61,6 +66,11 @@ public final class ORMLiteDAO <T extends BaseEntity> implements DAO<T> {
             @NonNull final Class<T> clazz) {
 
         this.theDAO = DaoManager.createDao(cs, clazz);
+    }
+    @SneakyThrows
+    public static ConnectionSource buildConnectionSource(String s) {
+        cs = new JdbcConnectionSource(s);
+        return cs;
     }
 
 
@@ -83,12 +93,13 @@ public final class ORMLiteDAO <T extends BaseEntity> implements DAO<T> {
         return Optional.of(t);
 
     }
+
     @SneakyThrows(SQLException.class)
     @Override
     public Optional<T> get(String attrib, Object value) {
         List<T> list = this.theDAO.queryForEq(attrib, value);
         for (T t : list) {
-            if(t.getDeletedAt() == null) {
+            if (t.getDeletedAt() == null) {
                 return Optional.of(t);
             }
 
@@ -106,7 +117,7 @@ public final class ORMLiteDAO <T extends BaseEntity> implements DAO<T> {
         List<T> list = Lists.newArrayList();
 
         for (T t : this.theDAO.queryForAll()) {
-            if(t.getDeletedAt() == null) {
+            if (t.getDeletedAt() == null) {
                 list.add(t);
             }
         }
@@ -177,6 +188,16 @@ public final class ORMLiteDAO <T extends BaseEntity> implements DAO<T> {
             }
         }
     }
+
+    @Override
+    @SneakyThrows
+    public void dropAndCreateTable() {
+        TableUtils.dropTable(cs, theDAO.getDataClass(), true);
+        TableUtils.createTable(cs, theDAO.getDataClass());
+
+    }
+
 }
+
 
 
