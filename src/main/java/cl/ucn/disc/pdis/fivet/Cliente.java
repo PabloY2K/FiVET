@@ -23,12 +23,15 @@
  */
 
 package cl.ucn.disc.pdis.fivet;
-
+import cl.ucn.disc.pdis.fivet.grpc.AuthenticateReq;
+import cl.ucn.disc.pdis.fivet.grpc.FivetServiceGrpc;
+import cl.ucn.disc.pdis.fivet.grpc.PersonaReply;
 import cl.ucn.disc.pdis.fivet.model.Persona;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
 import lombok.extern.slf4j.Slf4j;
+
 
 /**
  * The Client of Fivet
@@ -51,10 +54,10 @@ public final class Cliente {
                 .build();
 
         //The Stub
-        FivetServiceGrpc.FivetServiceBlockStub stub = FivetServiceGrpc.newBlockingStub(channel);
+        FivetServiceGrpc.FivetServiceBlockingStub stub = FivetServiceGrpc.newBlockingStub(channel);
 
         try {
-            Persona persona = stub.autenticar(Credencial.newBuilder()
+            PersonaReply persona = stub.authenticate(AuthenticateReq.newBuilder()
                     .setLogin("pablo.herrera@alumnos.ucn.cl")
                     .setPassword("hola123")
                     .build());
@@ -67,3 +70,4 @@ public final class Cliente {
     }
 
 }
+

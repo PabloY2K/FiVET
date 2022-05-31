@@ -49,7 +49,7 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Slf4j
-public class testDAO {
+public final class testDAO {
     /**
      * The Main DAO.
      */
@@ -59,8 +59,6 @@ public class testDAO {
     void theMain() {
         log.debug("Starting the MainTest ..");
 
-        log.debug("Registering the ZonedDateTimeType ..");
-        DataPersisterManager.registerDataPersisters(ZonedDateTimeType.INSTANCE);
 
         //The driver connection
         String databaseUrl = "jdbc:h2:mem:fivet";

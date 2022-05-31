@@ -26,6 +26,9 @@ package cl.ucn.disc.pdis.fivet;
 
 
 
+import cl.ucn.disc.pdis.fivet.grpc.AuthenticateReq;
+import cl.ucn.disc.pdis.fivet.grpc.FivetServiceGrpc;
+import cl.ucn.disc.pdis.fivet.grpc.PersonaReply;
 import cl.ucn.disc.pdis.fivet.model.Persona;
 import cl.ucn.disc.pdis.fivet.services.FivetControllerImpl;
 import cl.ucn.disc.pdis.fivet.services.FivetController;
@@ -34,6 +37,8 @@ import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.Optional;
 
 /**
  * The Server of Fivet
@@ -79,7 +84,7 @@ public final class Servidor {
          * @param databaseUrl
          */
         public FivetServiceImpl(String databaseUrl) {
-            this.fivetController = new FivetControllerImpl(databaseUrl, true);
+            this.fivetController = new FivetControllerImpl(databaseUrl);
         }
         /**
          * Authenticate.
@@ -88,13 +93,13 @@ public final class Servidor {
          * @param responseObserver
          */
         @Override
-        public void autenticar(Credencial request, StreamObserver<Persona> responseObserver) {
+        public void authenticate(AuthenticateReq request, StreamObserver<PersonaReply> responseObserver) {
             // Retrieve from Controller
-            Optional<cl.ucn.disc.pdis.fivet.model.Persona> persona = this.fivetController.retrieveByLogin(request.getLogin());
+            Optional<Persona> persona = this.fivetController.retrieveByLogin(request.getLogin());
 
             if(persona.isPresent()) {
                 //Return the observer
-                responseObserver.onNext(Persona.newBuilder()
+                responseObserver.onNext(PersonaReply.newBuilder()
                         .setRut(persona.get().getRut())
                         .setNombre(persona.get().getNombre())
                         .setEmail(persona.get().getEmail())
@@ -102,7 +107,7 @@ public final class Servidor {
                         .build());
                 responseObserver.onCompleted();
             } else {
-                responseObserver.onNext(Persona.newBuilder()
+                responseObserver.onNext(PersonaReply.newBuilder()
                         .setRut("204149763")
                         .setNombre("Pablo Luis Sergio Herrera Novoa")
                         .setEmail("pablo.herrera@alumnos.ucn.cl")

@@ -28,7 +28,10 @@ import cl.ucn.disc.pdis.fivet.model.Control;
 import cl.ucn.disc.pdis.fivet.model.FichaMedica;
 import cl.ucn.disc.pdis.fivet.model.Persona;
 import cl.ucn.disc.pdis.fivet.orm.DAO;
+import cl.ucn.disc.pdis.fivet.orm.LocalDateType;
 import cl.ucn.disc.pdis.fivet.orm.ORMLiteDAO;
+import cl.ucn.disc.pdis.fivet.orm.ZonedDateTimeType;
+import com.j256.ormlite.field.DataPersisterManager;
 import com.j256.ormlite.support.ConnectionSource;
 import lombok.Cleanup;
 import lombok.SneakyThrows;
@@ -57,6 +60,11 @@ public final class TestModel {
     @Test
     public void testModel() {
         log.info("Starting the Test..");
+
+        log.debug("Registering the ZonedDateTimeType...");
+        DataPersisterManager.registerDataPersisters(ZonedDateTimeType.INSTANCE);
+        log.debug("Registering the LocalDateType...");
+        DataPersisterManager.registerDataPersisters(LocalDateType.INSTANCE);
         // The password encoder
         PasswordEncoder passwordEncoder = new Argon2PasswordEncoder();
 

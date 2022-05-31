@@ -47,6 +47,12 @@ import java.util.Optional;
  */
 @Slf4j
 public final class ORMLiteDAO <T extends BaseEntity> implements DAO<T> {
+    static {
+        log.debug("Registering the ZonedDateTimeType...");
+        DataPersisterManager.registerDataPersisters(ZonedDateTimeType.INSTANCE);
+        log.debug("Registering the LocalDateType...");
+        DataPersisterManager.registerDataPersisters(LocalDateType.INSTANCE);
+    }
     /**
      * The real DAO (connection to ORMLite DAO)
      */
@@ -66,6 +72,7 @@ public final class ORMLiteDAO <T extends BaseEntity> implements DAO<T> {
             @NonNull final Class<T> clazz) {
 
         this.theDAO = DaoManager.createDao(cs, clazz);
+        ORMLiteDAO.cs = cs;
     }
     @SneakyThrows
     public static ConnectionSource buildConnectionSource(String s) {

@@ -104,6 +104,23 @@ import java.util.Optional;
             //Save the Persona
             this.daoPersona.save(persona);
         }
+        /**
+         * Retrieve a Persona by email or rut
+         * @param login email or rut
+         * @return a Optional Persona
+         */
+        @Override
+        public Optional<Persona> retrieveByLogin(String login) {
+            Optional<Persona> persona = this.daoPersona.get("rut", login);
+
+            if (persona.isEmpty()) {
+                persona = this.daoPersona.get("email", login);
+            }
+            if (persona.isEmpty()) {
+                return Optional.empty();
+            }
+            return persona;
+        }
 
 
         }

@@ -39,7 +39,13 @@ public interface FivetController {
      * @param password to login
      * @return a Persona
      */
-    Optional<Persona> autenticar(String login, String password);
+    Optional<Persona> autenticar(String login, String password); //cambiar a Autenticate(AutenticateReq) returns PersonaReply
+    //2 REGISTRAR CONTROL (dejarlo como AddControl) addControl(AddControlReq) returns FichaReply
+    //3 OBTENER FICHA (dejarlo como retrieveFicha) retrieveFicha(RetrieveReq) returns FichaReply
+    //4 searchFicha(searchFichaReq) returns FichaReply[]???
+    //5 addFicha (addFichaReq) returns FichaReply
+    //en el .proto
+
 
     /**
      * Add a Persona into the backend
@@ -47,4 +53,11 @@ public interface FivetController {
      * @param password to hash
      */
     void add(Persona persona, String password);
+    /**
+     * Retrieve a Persona by email or rut
+     * @param login email or rut
+     * @return a Optional Persona
+     */
+    Optional<Persona> retrieveByLogin(String login);
 }
+

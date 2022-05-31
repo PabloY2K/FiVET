@@ -29,6 +29,7 @@ import com.j256.ormlite.table.DatabaseTable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.ZonedDateTime;
 
@@ -53,6 +54,7 @@ public abstract class BaseEntity {
      * The date of creation.
      */
     @Getter
+    @Setter
     @DatabaseField(canBeNull = false)
     protected ZonedDateTime createdAt = ZonedDateTime.now();
 
