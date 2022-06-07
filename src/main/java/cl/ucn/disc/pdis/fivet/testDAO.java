@@ -38,6 +38,7 @@ import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+import org.h2.table.Table;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -69,7 +70,7 @@ public final class testDAO {
         log.debug("Building the Connection, using: {}", databaseUrl);
         //Build the Connection with auto close (clean up)
         @Cleanup
-        ConnectionSource cs = new JdbcConnectionSource(databaseUrl);
+        ConnectionSource cs = ORMLiteDAO.buildConnectionSource(databaseUrl);
 
         log.debug("Dropping the tables.. ");
         //Drop the database

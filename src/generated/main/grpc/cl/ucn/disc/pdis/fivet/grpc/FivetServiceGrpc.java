@@ -47,28 +47,28 @@ public final class FivetServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<cl.ucn.disc.pdis.fivet.grpc.AddControlReq,
-      cl.ucn.disc.pdis.fivet.grpc.FichaReply> getAddControlMethod;
+      cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply> getAddControlMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "addControl",
       requestType = cl.ucn.disc.pdis.fivet.grpc.AddControlReq.class,
-      responseType = cl.ucn.disc.pdis.fivet.grpc.FichaReply.class,
+      responseType = cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<cl.ucn.disc.pdis.fivet.grpc.AddControlReq,
-      cl.ucn.disc.pdis.fivet.grpc.FichaReply> getAddControlMethod() {
-    io.grpc.MethodDescriptor<cl.ucn.disc.pdis.fivet.grpc.AddControlReq, cl.ucn.disc.pdis.fivet.grpc.FichaReply> getAddControlMethod;
+      cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply> getAddControlMethod() {
+    io.grpc.MethodDescriptor<cl.ucn.disc.pdis.fivet.grpc.AddControlReq, cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply> getAddControlMethod;
     if ((getAddControlMethod = FivetServiceGrpc.getAddControlMethod) == null) {
       synchronized (FivetServiceGrpc.class) {
         if ((getAddControlMethod = FivetServiceGrpc.getAddControlMethod) == null) {
           FivetServiceGrpc.getAddControlMethod = getAddControlMethod =
-              io.grpc.MethodDescriptor.<cl.ucn.disc.pdis.fivet.grpc.AddControlReq, cl.ucn.disc.pdis.fivet.grpc.FichaReply>newBuilder()
+              io.grpc.MethodDescriptor.<cl.ucn.disc.pdis.fivet.grpc.AddControlReq, cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "addControl"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   cl.ucn.disc.pdis.fivet.grpc.AddControlReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cl.ucn.disc.pdis.fivet.grpc.FichaReply.getDefaultInstance()))
+                  cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply.getDefaultInstance()))
               .setSchemaDescriptor(new FivetServiceMethodDescriptorSupplier("addControl"))
               .build();
         }
@@ -77,29 +77,29 @@ public final class FivetServiceGrpc {
     return getAddControlMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaReq,
-      cl.ucn.disc.pdis.fivet.grpc.FichaReply> getRetrieveFichaMethod;
+  private static volatile io.grpc.MethodDescriptor<cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaMedicaReq,
+      cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply> getRetrieveFichaMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "retrieveFicha",
-      requestType = cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaReq.class,
-      responseType = cl.ucn.disc.pdis.fivet.grpc.FichaReply.class,
+      requestType = cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaMedicaReq.class,
+      responseType = cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaReq,
-      cl.ucn.disc.pdis.fivet.grpc.FichaReply> getRetrieveFichaMethod() {
-    io.grpc.MethodDescriptor<cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaReq, cl.ucn.disc.pdis.fivet.grpc.FichaReply> getRetrieveFichaMethod;
+  public static io.grpc.MethodDescriptor<cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaMedicaReq,
+      cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply> getRetrieveFichaMethod() {
+    io.grpc.MethodDescriptor<cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaMedicaReq, cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply> getRetrieveFichaMethod;
     if ((getRetrieveFichaMethod = FivetServiceGrpc.getRetrieveFichaMethod) == null) {
       synchronized (FivetServiceGrpc.class) {
         if ((getRetrieveFichaMethod = FivetServiceGrpc.getRetrieveFichaMethod) == null) {
           FivetServiceGrpc.getRetrieveFichaMethod = getRetrieveFichaMethod =
-              io.grpc.MethodDescriptor.<cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaReq, cl.ucn.disc.pdis.fivet.grpc.FichaReply>newBuilder()
+              io.grpc.MethodDescriptor.<cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaMedicaReq, cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "retrieveFicha"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaReq.getDefaultInstance()))
+                  cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaMedicaReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cl.ucn.disc.pdis.fivet.grpc.FichaReply.getDefaultInstance()))
+                  cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply.getDefaultInstance()))
               .setSchemaDescriptor(new FivetServiceMethodDescriptorSupplier("retrieveFicha"))
               .build();
         }
@@ -108,29 +108,29 @@ public final class FivetServiceGrpc {
     return getRetrieveFichaMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<cl.ucn.disc.pdis.fivet.grpc.SearchFichaReq,
-      cl.ucn.disc.pdis.fivet.grpc.FichaReply> getSearchFichaMethod;
+  private static volatile io.grpc.MethodDescriptor<cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq,
+      cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply> getSearchFichaMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "searchFicha",
-      requestType = cl.ucn.disc.pdis.fivet.grpc.SearchFichaReq.class,
-      responseType = cl.ucn.disc.pdis.fivet.grpc.FichaReply.class,
+      requestType = cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq.class,
+      responseType = cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<cl.ucn.disc.pdis.fivet.grpc.SearchFichaReq,
-      cl.ucn.disc.pdis.fivet.grpc.FichaReply> getSearchFichaMethod() {
-    io.grpc.MethodDescriptor<cl.ucn.disc.pdis.fivet.grpc.SearchFichaReq, cl.ucn.disc.pdis.fivet.grpc.FichaReply> getSearchFichaMethod;
+  public static io.grpc.MethodDescriptor<cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq,
+      cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply> getSearchFichaMethod() {
+    io.grpc.MethodDescriptor<cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq, cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply> getSearchFichaMethod;
     if ((getSearchFichaMethod = FivetServiceGrpc.getSearchFichaMethod) == null) {
       synchronized (FivetServiceGrpc.class) {
         if ((getSearchFichaMethod = FivetServiceGrpc.getSearchFichaMethod) == null) {
           FivetServiceGrpc.getSearchFichaMethod = getSearchFichaMethod =
-              io.grpc.MethodDescriptor.<cl.ucn.disc.pdis.fivet.grpc.SearchFichaReq, cl.ucn.disc.pdis.fivet.grpc.FichaReply>newBuilder()
+              io.grpc.MethodDescriptor.<cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq, cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "searchFicha"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cl.ucn.disc.pdis.fivet.grpc.SearchFichaReq.getDefaultInstance()))
+                  cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cl.ucn.disc.pdis.fivet.grpc.FichaReply.getDefaultInstance()))
+                  cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply.getDefaultInstance()))
               .setSchemaDescriptor(new FivetServiceMethodDescriptorSupplier("searchFicha"))
               .build();
         }
@@ -139,29 +139,29 @@ public final class FivetServiceGrpc {
     return getSearchFichaMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<cl.ucn.disc.pdis.fivet.grpc.AddFichaReq,
-      cl.ucn.disc.pdis.fivet.grpc.FichaReply> getAddFichaMethod;
+  private static volatile io.grpc.MethodDescriptor<cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq,
+      cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply> getAddFichaMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "addFicha",
-      requestType = cl.ucn.disc.pdis.fivet.grpc.AddFichaReq.class,
-      responseType = cl.ucn.disc.pdis.fivet.grpc.FichaReply.class,
+      requestType = cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq.class,
+      responseType = cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cl.ucn.disc.pdis.fivet.grpc.AddFichaReq,
-      cl.ucn.disc.pdis.fivet.grpc.FichaReply> getAddFichaMethod() {
-    io.grpc.MethodDescriptor<cl.ucn.disc.pdis.fivet.grpc.AddFichaReq, cl.ucn.disc.pdis.fivet.grpc.FichaReply> getAddFichaMethod;
+  public static io.grpc.MethodDescriptor<cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq,
+      cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply> getAddFichaMethod() {
+    io.grpc.MethodDescriptor<cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq, cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply> getAddFichaMethod;
     if ((getAddFichaMethod = FivetServiceGrpc.getAddFichaMethod) == null) {
       synchronized (FivetServiceGrpc.class) {
         if ((getAddFichaMethod = FivetServiceGrpc.getAddFichaMethod) == null) {
           FivetServiceGrpc.getAddFichaMethod = getAddFichaMethod =
-              io.grpc.MethodDescriptor.<cl.ucn.disc.pdis.fivet.grpc.AddFichaReq, cl.ucn.disc.pdis.fivet.grpc.FichaReply>newBuilder()
+              io.grpc.MethodDescriptor.<cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq, cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "addFicha"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cl.ucn.disc.pdis.fivet.grpc.AddFichaReq.getDefaultInstance()))
+                  cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cl.ucn.disc.pdis.fivet.grpc.FichaReply.getDefaultInstance()))
+                  cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply.getDefaultInstance()))
               .setSchemaDescriptor(new FivetServiceMethodDescriptorSupplier("addFicha"))
               .build();
         }
@@ -228,28 +228,28 @@ public final class FivetServiceGrpc {
     /**
      */
     public void addControl(cl.ucn.disc.pdis.fivet.grpc.AddControlReq request,
-        io.grpc.stub.StreamObserver<cl.ucn.disc.pdis.fivet.grpc.FichaReply> responseObserver) {
+        io.grpc.stub.StreamObserver<cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getAddControlMethod(), responseObserver);
     }
 
     /**
      */
-    public void retrieveFicha(cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaReq request,
-        io.grpc.stub.StreamObserver<cl.ucn.disc.pdis.fivet.grpc.FichaReply> responseObserver) {
+    public void retrieveFicha(cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaMedicaReq request,
+        io.grpc.stub.StreamObserver<cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRetrieveFichaMethod(), responseObserver);
     }
 
     /**
      */
-    public void searchFicha(cl.ucn.disc.pdis.fivet.grpc.SearchFichaReq request,
-        io.grpc.stub.StreamObserver<cl.ucn.disc.pdis.fivet.grpc.FichaReply> responseObserver) {
+    public void searchFicha(cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq request,
+        io.grpc.stub.StreamObserver<cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSearchFichaMethod(), responseObserver);
     }
 
     /**
      */
-    public void addFicha(cl.ucn.disc.pdis.fivet.grpc.AddFichaReq request,
-        io.grpc.stub.StreamObserver<cl.ucn.disc.pdis.fivet.grpc.FichaReply> responseObserver) {
+    public void addFicha(cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq request,
+        io.grpc.stub.StreamObserver<cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getAddFichaMethod(), responseObserver);
     }
 
@@ -267,28 +267,28 @@ public final class FivetServiceGrpc {
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 cl.ucn.disc.pdis.fivet.grpc.AddControlReq,
-                cl.ucn.disc.pdis.fivet.grpc.FichaReply>(
+                cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply>(
                   this, METHODID_ADD_CONTROL)))
           .addMethod(
             getRetrieveFichaMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaReq,
-                cl.ucn.disc.pdis.fivet.grpc.FichaReply>(
+                cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaMedicaReq,
+                cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply>(
                   this, METHODID_RETRIEVE_FICHA)))
           .addMethod(
             getSearchFichaMethod(),
             io.grpc.stub.ServerCalls.asyncServerStreamingCall(
               new MethodHandlers<
-                cl.ucn.disc.pdis.fivet.grpc.SearchFichaReq,
-                cl.ucn.disc.pdis.fivet.grpc.FichaReply>(
+                cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq,
+                cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply>(
                   this, METHODID_SEARCH_FICHA)))
           .addMethod(
             getAddFichaMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                cl.ucn.disc.pdis.fivet.grpc.AddFichaReq,
-                cl.ucn.disc.pdis.fivet.grpc.FichaReply>(
+                cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq,
+                cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply>(
                   this, METHODID_ADD_FICHA)))
           .build();
     }
@@ -319,31 +319,31 @@ public final class FivetServiceGrpc {
     /**
      */
     public void addControl(cl.ucn.disc.pdis.fivet.grpc.AddControlReq request,
-        io.grpc.stub.StreamObserver<cl.ucn.disc.pdis.fivet.grpc.FichaReply> responseObserver) {
+        io.grpc.stub.StreamObserver<cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getAddControlMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void retrieveFicha(cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaReq request,
-        io.grpc.stub.StreamObserver<cl.ucn.disc.pdis.fivet.grpc.FichaReply> responseObserver) {
+    public void retrieveFicha(cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaMedicaReq request,
+        io.grpc.stub.StreamObserver<cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getRetrieveFichaMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void searchFicha(cl.ucn.disc.pdis.fivet.grpc.SearchFichaReq request,
-        io.grpc.stub.StreamObserver<cl.ucn.disc.pdis.fivet.grpc.FichaReply> responseObserver) {
+    public void searchFicha(cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq request,
+        io.grpc.stub.StreamObserver<cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getSearchFichaMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void addFicha(cl.ucn.disc.pdis.fivet.grpc.AddFichaReq request,
-        io.grpc.stub.StreamObserver<cl.ucn.disc.pdis.fivet.grpc.FichaReply> responseObserver) {
+    public void addFicha(cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq request,
+        io.grpc.stub.StreamObserver<cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getAddFichaMethod(), getCallOptions()), request, responseObserver);
     }
@@ -372,29 +372,29 @@ public final class FivetServiceGrpc {
 
     /**
      */
-    public cl.ucn.disc.pdis.fivet.grpc.FichaReply addControl(cl.ucn.disc.pdis.fivet.grpc.AddControlReq request) {
+    public cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply addControl(cl.ucn.disc.pdis.fivet.grpc.AddControlReq request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getAddControlMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public cl.ucn.disc.pdis.fivet.grpc.FichaReply retrieveFicha(cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaReq request) {
+    public cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply retrieveFicha(cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaMedicaReq request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getRetrieveFichaMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public java.util.Iterator<cl.ucn.disc.pdis.fivet.grpc.FichaReply> searchFicha(
-        cl.ucn.disc.pdis.fivet.grpc.SearchFichaReq request) {
+    public java.util.Iterator<cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply> searchFicha(
+        cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getSearchFichaMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public cl.ucn.disc.pdis.fivet.grpc.FichaReply addFicha(cl.ucn.disc.pdis.fivet.grpc.AddFichaReq request) {
+    public cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply addFicha(cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getAddFichaMethod(), getCallOptions(), request);
     }
@@ -424,7 +424,7 @@ public final class FivetServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<cl.ucn.disc.pdis.fivet.grpc.FichaReply> addControl(
+    public com.google.common.util.concurrent.ListenableFuture<cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply> addControl(
         cl.ucn.disc.pdis.fivet.grpc.AddControlReq request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getAddControlMethod(), getCallOptions()), request);
@@ -432,16 +432,16 @@ public final class FivetServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<cl.ucn.disc.pdis.fivet.grpc.FichaReply> retrieveFicha(
-        cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaReq request) {
+    public com.google.common.util.concurrent.ListenableFuture<cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply> retrieveFicha(
+        cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaMedicaReq request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getRetrieveFichaMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<cl.ucn.disc.pdis.fivet.grpc.FichaReply> addFicha(
-        cl.ucn.disc.pdis.fivet.grpc.AddFichaReq request) {
+    public com.google.common.util.concurrent.ListenableFuture<cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply> addFicha(
+        cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getAddFichaMethod(), getCallOptions()), request);
     }
@@ -476,19 +476,19 @@ public final class FivetServiceGrpc {
           break;
         case METHODID_ADD_CONTROL:
           serviceImpl.addControl((cl.ucn.disc.pdis.fivet.grpc.AddControlReq) request,
-              (io.grpc.stub.StreamObserver<cl.ucn.disc.pdis.fivet.grpc.FichaReply>) responseObserver);
+              (io.grpc.stub.StreamObserver<cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply>) responseObserver);
           break;
         case METHODID_RETRIEVE_FICHA:
-          serviceImpl.retrieveFicha((cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaReq) request,
-              (io.grpc.stub.StreamObserver<cl.ucn.disc.pdis.fivet.grpc.FichaReply>) responseObserver);
+          serviceImpl.retrieveFicha((cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaMedicaReq) request,
+              (io.grpc.stub.StreamObserver<cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply>) responseObserver);
           break;
         case METHODID_SEARCH_FICHA:
-          serviceImpl.searchFicha((cl.ucn.disc.pdis.fivet.grpc.SearchFichaReq) request,
-              (io.grpc.stub.StreamObserver<cl.ucn.disc.pdis.fivet.grpc.FichaReply>) responseObserver);
+          serviceImpl.searchFicha((cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq) request,
+              (io.grpc.stub.StreamObserver<cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply>) responseObserver);
           break;
         case METHODID_ADD_FICHA:
-          serviceImpl.addFicha((cl.ucn.disc.pdis.fivet.grpc.AddFichaReq) request,
-              (io.grpc.stub.StreamObserver<cl.ucn.disc.pdis.fivet.grpc.FichaReply>) responseObserver);
+          serviceImpl.addFicha((cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq) request,
+              (io.grpc.stub.StreamObserver<cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply>) responseObserver);
           break;
         default:
           throw new AssertionError();

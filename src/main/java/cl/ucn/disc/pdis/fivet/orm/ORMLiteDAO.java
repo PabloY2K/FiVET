@@ -67,10 +67,7 @@ public final class ORMLiteDAO <T extends BaseEntity> implements DAO<T> {
      * @param clazz the type of T.
      */
     @SneakyThrows(SQLException.class)
-    public ORMLiteDAO(
-            @NonNull final ConnectionSource cs,
-            @NonNull final Class<T> clazz) {
-
+    public ORMLiteDAO(@NonNull final ConnectionSource cs,@NonNull final Class<T> clazz) {
         this.theDAO = DaoManager.createDao(cs, clazz);
         ORMLiteDAO.cs = cs;
     }

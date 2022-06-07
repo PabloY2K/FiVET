@@ -28,6 +28,7 @@ package cl.ucn.disc.pdis.fivet;
 
 import cl.ucn.disc.pdis.fivet.grpc.AuthenticateReq;
 import cl.ucn.disc.pdis.fivet.grpc.FivetServiceGrpc;
+import cl.ucn.disc.pdis.fivet.grpc.PersonaEntity;
 import cl.ucn.disc.pdis.fivet.grpc.PersonaReply;
 import cl.ucn.disc.pdis.fivet.model.Persona;
 import cl.ucn.disc.pdis.fivet.services.FivetControllerImpl;
@@ -100,19 +101,23 @@ public final class Servidor {
             if(persona.isPresent()) {
                 //Return the observer
                 responseObserver.onNext(PersonaReply.newBuilder()
+                                .setPersona(PersonaEntity.newBuilder()
                         .setRut(persona.get().getRut())
                         .setNombre(persona.get().getNombre())
                         .setEmail(persona.get().getEmail())
                         .setDireccion(persona.get().getDireccion())
-                        .build());
+                                        .build())
+                                        .build());
                 responseObserver.onCompleted();
             } else {
                 responseObserver.onNext(PersonaReply.newBuilder()
+                                .setPersona(PersonaEntity.newBuilder()
                         .setRut("204149763")
                         .setNombre("Pablo Luis Sergio Herrera Novoa")
                         .setEmail("pablo.herrera@alumnos.ucn.cl")
                         .setDireccion("Santa Margarita 806")
-                        .build());
+                                        .build())
+                                        .build());
                 responseObserver.onCompleted();
                 // responseObserver.onError(new RuntimeException("Persona Not Found!"));
             }

@@ -4,26 +4,26 @@
 package cl.ucn.disc.pdis.fivet.grpc;
 
 /**
- * Protobuf type {@code AddFichaReq}
+ * Protobuf type {@code SearchFichaMedicaReq}
  */
-public final class AddFichaReq extends
+public final class SearchFichaMedicaReq extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:AddFichaReq)
-    AddFichaReqOrBuilder {
+    // @@protoc_insertion_point(message_implements:SearchFichaMedicaReq)
+    SearchFichaMedicaReqOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use AddFichaReq.newBuilder() to construct.
-  private AddFichaReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use SearchFichaMedicaReq.newBuilder() to construct.
+  private SearchFichaMedicaReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private AddFichaReq() {
-    ficha_ = "";
+  private SearchFichaMedicaReq() {
+    q_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new AddFichaReq();
+    return new SearchFichaMedicaReq();
   }
 
   @java.lang.Override
@@ -31,7 +31,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private AddFichaReq(
+  private SearchFichaMedicaReq(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -52,7 +52,7 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            ficha_ = s;
+            q_ = s;
             break;
           }
           default: {
@@ -78,49 +78,49 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return cl.ucn.disc.pdis.fivet.grpc.Fivet.internal_static_AddFichaReq_descriptor;
+    return cl.ucn.disc.pdis.fivet.grpc.Fivet.internal_static_SearchFichaMedicaReq_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return cl.ucn.disc.pdis.fivet.grpc.Fivet.internal_static_AddFichaReq_fieldAccessorTable
+    return cl.ucn.disc.pdis.fivet.grpc.Fivet.internal_static_SearchFichaMedicaReq_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            cl.ucn.disc.pdis.fivet.grpc.AddFichaReq.class, cl.ucn.disc.pdis.fivet.grpc.AddFichaReq.Builder.class);
+            cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq.class, cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq.Builder.class);
   }
 
-  public static final int FICHA_FIELD_NUMBER = 1;
-  private volatile java.lang.Object ficha_;
+  public static final int Q_FIELD_NUMBER = 1;
+  private volatile java.lang.Object q_;
   /**
-   * <code>string ficha = 1;</code>
-   * @return The ficha.
+   * <code>string q = 1;</code>
+   * @return The q.
    */
   @java.lang.Override
-  public java.lang.String getFicha() {
-    java.lang.Object ref = ficha_;
+  public java.lang.String getQ() {
+    java.lang.Object ref = q_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      ficha_ = s;
+      q_ = s;
       return s;
     }
   }
   /**
-   * <code>string ficha = 1;</code>
-   * @return The bytes for ficha.
+   * <code>string q = 1;</code>
+   * @return The bytes for q.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getFichaBytes() {
-    java.lang.Object ref = ficha_;
+      getQBytes() {
+    java.lang.Object ref = q_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      ficha_ = b;
+      q_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -141,8 +141,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ficha_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, ficha_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(q_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, q_);
     }
     unknownFields.writeTo(output);
   }
@@ -153,8 +153,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ficha_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, ficha_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(q_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, q_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -166,13 +166,13 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof cl.ucn.disc.pdis.fivet.grpc.AddFichaReq)) {
+    if (!(obj instanceof cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq)) {
       return super.equals(obj);
     }
-    cl.ucn.disc.pdis.fivet.grpc.AddFichaReq other = (cl.ucn.disc.pdis.fivet.grpc.AddFichaReq) obj;
+    cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq other = (cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq) obj;
 
-    if (!getFicha()
-        .equals(other.getFicha())) return false;
+    if (!getQ()
+        .equals(other.getQ())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -184,76 +184,76 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + FICHA_FIELD_NUMBER;
-    hash = (53 * hash) + getFicha().hashCode();
+    hash = (37 * hash) + Q_FIELD_NUMBER;
+    hash = (53 * hash) + getQ().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static cl.ucn.disc.pdis.fivet.grpc.AddFichaReq parseFrom(
+  public static cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static cl.ucn.disc.pdis.fivet.grpc.AddFichaReq parseFrom(
+  public static cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static cl.ucn.disc.pdis.fivet.grpc.AddFichaReq parseFrom(
+  public static cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static cl.ucn.disc.pdis.fivet.grpc.AddFichaReq parseFrom(
+  public static cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static cl.ucn.disc.pdis.fivet.grpc.AddFichaReq parseFrom(byte[] data)
+  public static cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static cl.ucn.disc.pdis.fivet.grpc.AddFichaReq parseFrom(
+  public static cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static cl.ucn.disc.pdis.fivet.grpc.AddFichaReq parseFrom(java.io.InputStream input)
+  public static cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static cl.ucn.disc.pdis.fivet.grpc.AddFichaReq parseFrom(
+  public static cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static cl.ucn.disc.pdis.fivet.grpc.AddFichaReq parseDelimitedFrom(java.io.InputStream input)
+  public static cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static cl.ucn.disc.pdis.fivet.grpc.AddFichaReq parseDelimitedFrom(
+  public static cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static cl.ucn.disc.pdis.fivet.grpc.AddFichaReq parseFrom(
+  public static cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static cl.ucn.disc.pdis.fivet.grpc.AddFichaReq parseFrom(
+  public static cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -266,7 +266,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(cl.ucn.disc.pdis.fivet.grpc.AddFichaReq prototype) {
+  public static Builder newBuilder(cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -282,26 +282,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code AddFichaReq}
+   * Protobuf type {@code SearchFichaMedicaReq}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:AddFichaReq)
-      cl.ucn.disc.pdis.fivet.grpc.AddFichaReqOrBuilder {
+      // @@protoc_insertion_point(builder_implements:SearchFichaMedicaReq)
+      cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReqOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return cl.ucn.disc.pdis.fivet.grpc.Fivet.internal_static_AddFichaReq_descriptor;
+      return cl.ucn.disc.pdis.fivet.grpc.Fivet.internal_static_SearchFichaMedicaReq_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return cl.ucn.disc.pdis.fivet.grpc.Fivet.internal_static_AddFichaReq_fieldAccessorTable
+      return cl.ucn.disc.pdis.fivet.grpc.Fivet.internal_static_SearchFichaMedicaReq_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              cl.ucn.disc.pdis.fivet.grpc.AddFichaReq.class, cl.ucn.disc.pdis.fivet.grpc.AddFichaReq.Builder.class);
+              cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq.class, cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq.Builder.class);
     }
 
-    // Construct using cl.ucn.disc.pdis.fivet.grpc.AddFichaReq.newBuilder()
+    // Construct using cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -319,7 +319,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      ficha_ = "";
+      q_ = "";
 
       return this;
     }
@@ -327,17 +327,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return cl.ucn.disc.pdis.fivet.grpc.Fivet.internal_static_AddFichaReq_descriptor;
+      return cl.ucn.disc.pdis.fivet.grpc.Fivet.internal_static_SearchFichaMedicaReq_descriptor;
     }
 
     @java.lang.Override
-    public cl.ucn.disc.pdis.fivet.grpc.AddFichaReq getDefaultInstanceForType() {
-      return cl.ucn.disc.pdis.fivet.grpc.AddFichaReq.getDefaultInstance();
+    public cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq getDefaultInstanceForType() {
+      return cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq.getDefaultInstance();
     }
 
     @java.lang.Override
-    public cl.ucn.disc.pdis.fivet.grpc.AddFichaReq build() {
-      cl.ucn.disc.pdis.fivet.grpc.AddFichaReq result = buildPartial();
+    public cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq build() {
+      cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -345,9 +345,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public cl.ucn.disc.pdis.fivet.grpc.AddFichaReq buildPartial() {
-      cl.ucn.disc.pdis.fivet.grpc.AddFichaReq result = new cl.ucn.disc.pdis.fivet.grpc.AddFichaReq(this);
-      result.ficha_ = ficha_;
+    public cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq buildPartial() {
+      cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq result = new cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq(this);
+      result.q_ = q_;
       onBuilt();
       return result;
     }
@@ -386,18 +386,18 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof cl.ucn.disc.pdis.fivet.grpc.AddFichaReq) {
-        return mergeFrom((cl.ucn.disc.pdis.fivet.grpc.AddFichaReq)other);
+      if (other instanceof cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq) {
+        return mergeFrom((cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(cl.ucn.disc.pdis.fivet.grpc.AddFichaReq other) {
-      if (other == cl.ucn.disc.pdis.fivet.grpc.AddFichaReq.getDefaultInstance()) return this;
-      if (!other.getFicha().isEmpty()) {
-        ficha_ = other.ficha_;
+    public Builder mergeFrom(cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq other) {
+      if (other == cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq.getDefaultInstance()) return this;
+      if (!other.getQ().isEmpty()) {
+        q_ = other.q_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -415,11 +415,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      cl.ucn.disc.pdis.fivet.grpc.AddFichaReq parsedMessage = null;
+      cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (cl.ucn.disc.pdis.fivet.grpc.AddFichaReq) e.getUnfinishedMessage();
+        parsedMessage = (cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -429,78 +429,78 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object ficha_ = "";
+    private java.lang.Object q_ = "";
     /**
-     * <code>string ficha = 1;</code>
-     * @return The ficha.
+     * <code>string q = 1;</code>
+     * @return The q.
      */
-    public java.lang.String getFicha() {
-      java.lang.Object ref = ficha_;
+    public java.lang.String getQ() {
+      java.lang.Object ref = q_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        ficha_ = s;
+        q_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string ficha = 1;</code>
-     * @return The bytes for ficha.
+     * <code>string q = 1;</code>
+     * @return The bytes for q.
      */
     public com.google.protobuf.ByteString
-        getFichaBytes() {
-      java.lang.Object ref = ficha_;
+        getQBytes() {
+      java.lang.Object ref = q_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        ficha_ = b;
+        q_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string ficha = 1;</code>
-     * @param value The ficha to set.
+     * <code>string q = 1;</code>
+     * @param value The q to set.
      * @return This builder for chaining.
      */
-    public Builder setFicha(
+    public Builder setQ(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      ficha_ = value;
+      q_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string ficha = 1;</code>
+     * <code>string q = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearFicha() {
+    public Builder clearQ() {
       
-      ficha_ = getDefaultInstance().getFicha();
+      q_ = getDefaultInstance().getQ();
       onChanged();
       return this;
     }
     /**
-     * <code>string ficha = 1;</code>
-     * @param value The bytes for ficha to set.
+     * <code>string q = 1;</code>
+     * @param value The bytes for q to set.
      * @return This builder for chaining.
      */
-    public Builder setFichaBytes(
+    public Builder setQBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      ficha_ = value;
+      q_ = value;
       onChanged();
       return this;
     }
@@ -517,41 +517,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:AddFichaReq)
+    // @@protoc_insertion_point(builder_scope:SearchFichaMedicaReq)
   }
 
-  // @@protoc_insertion_point(class_scope:AddFichaReq)
-  private static final cl.ucn.disc.pdis.fivet.grpc.AddFichaReq DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:SearchFichaMedicaReq)
+  private static final cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new cl.ucn.disc.pdis.fivet.grpc.AddFichaReq();
+    DEFAULT_INSTANCE = new cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq();
   }
 
-  public static cl.ucn.disc.pdis.fivet.grpc.AddFichaReq getDefaultInstance() {
+  public static cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<AddFichaReq>
-      PARSER = new com.google.protobuf.AbstractParser<AddFichaReq>() {
+  private static final com.google.protobuf.Parser<SearchFichaMedicaReq>
+      PARSER = new com.google.protobuf.AbstractParser<SearchFichaMedicaReq>() {
     @java.lang.Override
-    public AddFichaReq parsePartialFrom(
+    public SearchFichaMedicaReq parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new AddFichaReq(input, extensionRegistry);
+      return new SearchFichaMedicaReq(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<AddFichaReq> parser() {
+  public static com.google.protobuf.Parser<SearchFichaMedicaReq> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<AddFichaReq> getParserForType() {
+  public com.google.protobuf.Parser<SearchFichaMedicaReq> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public cl.ucn.disc.pdis.fivet.grpc.AddFichaReq getDefaultInstanceForType() {
+  public cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

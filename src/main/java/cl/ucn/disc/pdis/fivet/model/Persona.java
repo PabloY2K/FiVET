@@ -42,18 +42,21 @@ public final class Persona extends BaseEntity {
      * The Rut.
      */
     @Getter
+    @Setter
     @DatabaseField(unique = true, canBeNull = false)
     private String rut;
 
     /** The Nombre.
      */
     @Getter
+    @Setter
     @DatabaseField(canBeNull = false)
     private String nombre;
     /**
      * The Email.
      */
     @Getter
+    @Setter
     @DatabaseField(unique = true, canBeNull = false)
     private String email;
     /**
@@ -68,6 +71,7 @@ public final class Persona extends BaseEntity {
      * The Direccion.
      */
     @Getter
+    @Setter
     @DatabaseField(canBeNull = true)
     private String direccion;
 

@@ -8,50 +8,17 @@ public interface PersonaReplyOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string rut = 1;</code>
-   * @return The rut.
+   * <code>.PersonaEntity persona = 1;</code>
+   * @return Whether the persona field is set.
    */
-  java.lang.String getRut();
+  boolean hasPersona();
   /**
-   * <code>string rut = 1;</code>
-   * @return The bytes for rut.
+   * <code>.PersonaEntity persona = 1;</code>
+   * @return The persona.
    */
-  com.google.protobuf.ByteString
-      getRutBytes();
-
+  cl.ucn.disc.pdis.fivet.grpc.PersonaEntity getPersona();
   /**
-   * <code>string nombre = 2;</code>
-   * @return The nombre.
+   * <code>.PersonaEntity persona = 1;</code>
    */
-  java.lang.String getNombre();
-  /**
-   * <code>string nombre = 2;</code>
-   * @return The bytes for nombre.
-   */
-  com.google.protobuf.ByteString
-      getNombreBytes();
-
-  /**
-   * <code>string email = 3;</code>
-   * @return The email.
-   */
-  java.lang.String getEmail();
-  /**
-   * <code>string email = 3;</code>
-   * @return The bytes for email.
-   */
-  com.google.protobuf.ByteString
-      getEmailBytes();
-
-  /**
-   * <code>string direccion = 4;</code>
-   * @return The direccion.
-   */
-  java.lang.String getDireccion();
-  /**
-   * <code>string direccion = 4;</code>
-   * @return The bytes for direccion.
-   */
-  com.google.protobuf.ByteString
-      getDireccionBytes();
+  cl.ucn.disc.pdis.fivet.grpc.PersonaEntityOrBuilder getPersonaOrBuilder();
 }

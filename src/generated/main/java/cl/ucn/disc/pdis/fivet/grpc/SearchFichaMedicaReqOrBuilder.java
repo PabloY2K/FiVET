@@ -3,8 +3,8 @@
 
 package cl.ucn.disc.pdis.fivet.grpc;
 
-public interface SearchFichaReqOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:SearchFichaReq)
+public interface SearchFichaMedicaReqOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:SearchFichaMedicaReq)
     com.google.protobuf.MessageOrBuilder {
 
   /**
