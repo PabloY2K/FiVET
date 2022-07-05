@@ -95,10 +95,10 @@ private static final long serialVersionUID = 0L;
             cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply.class, cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply.Builder.class);
   }
 
-  public static final int FICHAMEDICA_FIELD_NUMBER = 1;
+  public static final int FICHA_MEDICA_FIELD_NUMBER = 1;
   private cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity fichaMedica_;
   /**
-   * <code>.FichaMedicaEntity fichaMedica = 1;</code>
+   * <code>.FichaMedicaEntity ficha_medica = 1;</code>
    * @return Whether the fichaMedica field is set.
    */
   @java.lang.Override
@@ -106,7 +106,7 @@ private static final long serialVersionUID = 0L;
     return fichaMedica_ != null;
   }
   /**
-   * <code>.FichaMedicaEntity fichaMedica = 1;</code>
+   * <code>.FichaMedicaEntity ficha_medica = 1;</code>
    * @return The fichaMedica.
    */
   @java.lang.Override
@@ -114,7 +114,7 @@ private static final long serialVersionUID = 0L;
     return fichaMedica_ == null ? cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity.getDefaultInstance() : fichaMedica_;
   }
   /**
-   * <code>.FichaMedicaEntity fichaMedica = 1;</code>
+   * <code>.FichaMedicaEntity ficha_medica = 1;</code>
    */
   @java.lang.Override
   public cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntityOrBuilder getFichaMedicaOrBuilder() {
@@ -183,7 +183,7 @@ private static final long serialVersionUID = 0L;
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     if (hasFichaMedica()) {
-      hash = (37 * hash) + FICHAMEDICA_FIELD_NUMBER;
+      hash = (37 * hash) + FICHA_MEDICA_FIELD_NUMBER;
       hash = (53 * hash) + getFichaMedica().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
@@ -440,14 +440,14 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity, cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity.Builder, cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntityOrBuilder> fichaMedicaBuilder_;
     /**
-     * <code>.FichaMedicaEntity fichaMedica = 1;</code>
+     * <code>.FichaMedicaEntity ficha_medica = 1;</code>
      * @return Whether the fichaMedica field is set.
      */
     public boolean hasFichaMedica() {
       return fichaMedicaBuilder_ != null || fichaMedica_ != null;
     }
     /**
-     * <code>.FichaMedicaEntity fichaMedica = 1;</code>
+     * <code>.FichaMedicaEntity ficha_medica = 1;</code>
      * @return The fichaMedica.
      */
     public cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity getFichaMedica() {
@@ -458,7 +458,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.FichaMedicaEntity fichaMedica = 1;</code>
+     * <code>.FichaMedicaEntity ficha_medica = 1;</code>
      */
     public Builder setFichaMedica(cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity value) {
       if (fichaMedicaBuilder_ == null) {
@@ -474,7 +474,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.FichaMedicaEntity fichaMedica = 1;</code>
+     * <code>.FichaMedicaEntity ficha_medica = 1;</code>
      */
     public Builder setFichaMedica(
         cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity.Builder builderForValue) {
@@ -488,7 +488,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.FichaMedicaEntity fichaMedica = 1;</code>
+     * <code>.FichaMedicaEntity ficha_medica = 1;</code>
      */
     public Builder mergeFichaMedica(cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity value) {
       if (fichaMedicaBuilder_ == null) {
@@ -506,7 +506,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.FichaMedicaEntity fichaMedica = 1;</code>
+     * <code>.FichaMedicaEntity ficha_medica = 1;</code>
      */
     public Builder clearFichaMedica() {
       if (fichaMedicaBuilder_ == null) {
@@ -520,7 +520,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.FichaMedicaEntity fichaMedica = 1;</code>
+     * <code>.FichaMedicaEntity ficha_medica = 1;</code>
      */
     public cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity.Builder getFichaMedicaBuilder() {
       
@@ -528,7 +528,7 @@ private static final long serialVersionUID = 0L;
       return getFichaMedicaFieldBuilder().getBuilder();
     }
     /**
-     * <code>.FichaMedicaEntity fichaMedica = 1;</code>
+     * <code>.FichaMedicaEntity ficha_medica = 1;</code>
      */
     public cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntityOrBuilder getFichaMedicaOrBuilder() {
       if (fichaMedicaBuilder_ != null) {
@@ -539,7 +539,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.FichaMedicaEntity fichaMedica = 1;</code>
+     * <code>.FichaMedicaEntity ficha_medica = 1;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity, cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity.Builder, cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntityOrBuilder> 

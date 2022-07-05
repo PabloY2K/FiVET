@@ -4,25 +4,26 @@
 package cl.ucn.disc.pdis.fivet.grpc;
 
 /**
- * Protobuf type {@code AddFichaMedicaReq}
+ * Protobuf type {@code RetrievePersonaReq}
  */
-public final class AddFichaMedicaReq extends
+public final class RetrievePersonaReq extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:AddFichaMedicaReq)
-    AddFichaMedicaReqOrBuilder {
+    // @@protoc_insertion_point(message_implements:RetrievePersonaReq)
+    RetrievePersonaReqOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use AddFichaMedicaReq.newBuilder() to construct.
-  private AddFichaMedicaReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use RetrievePersonaReq.newBuilder() to construct.
+  private RetrievePersonaReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private AddFichaMedicaReq() {
+  private RetrievePersonaReq() {
+    login_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new AddFichaMedicaReq();
+    return new RetrievePersonaReq();
   }
 
   @java.lang.Override
@@ -30,7 +31,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private AddFichaMedicaReq(
+  private RetrievePersonaReq(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -49,16 +50,9 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           case 10: {
-            cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity.Builder subBuilder = null;
-            if (ficha_ != null) {
-              subBuilder = ficha_.toBuilder();
-            }
-            ficha_ = input.readMessage(cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(ficha_);
-              ficha_ = subBuilder.buildPartial();
-            }
+            java.lang.String s = input.readStringRequireUtf8();
 
+            login_ = s;
             break;
           }
           default: {
@@ -84,41 +78,53 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return cl.ucn.disc.pdis.fivet.grpc.Fivet.internal_static_AddFichaMedicaReq_descriptor;
+    return cl.ucn.disc.pdis.fivet.grpc.Fivet.internal_static_RetrievePersonaReq_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return cl.ucn.disc.pdis.fivet.grpc.Fivet.internal_static_AddFichaMedicaReq_fieldAccessorTable
+    return cl.ucn.disc.pdis.fivet.grpc.Fivet.internal_static_RetrievePersonaReq_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq.class, cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq.Builder.class);
+            cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq.class, cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq.Builder.class);
   }
 
-  public static final int FICHA_FIELD_NUMBER = 1;
-  private cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity ficha_;
+  public static final int LOGIN_FIELD_NUMBER = 1;
+  private volatile java.lang.Object login_;
   /**
-   * <code>.FichaMedicaEntity ficha = 1;</code>
-   * @return Whether the ficha field is set.
+   * <code>string login = 1;</code>
+   * @return The login.
    */
   @java.lang.Override
-  public boolean hasFicha() {
-    return ficha_ != null;
+  public java.lang.String getLogin() {
+    java.lang.Object ref = login_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      login_ = s;
+      return s;
+    }
   }
   /**
-   * <code>.FichaMedicaEntity ficha = 1;</code>
-   * @return The ficha.
+   * <code>string login = 1;</code>
+   * @return The bytes for login.
    */
   @java.lang.Override
-  public cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity getFicha() {
-    return ficha_ == null ? cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity.getDefaultInstance() : ficha_;
-  }
-  /**
-   * <code>.FichaMedicaEntity ficha = 1;</code>
-   */
-  @java.lang.Override
-  public cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntityOrBuilder getFichaOrBuilder() {
-    return getFicha();
+  public com.google.protobuf.ByteString
+      getLoginBytes() {
+    java.lang.Object ref = login_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      login_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   private byte memoizedIsInitialized = -1;
@@ -135,8 +141,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (ficha_ != null) {
-      output.writeMessage(1, getFicha());
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(login_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, login_);
     }
     unknownFields.writeTo(output);
   }
@@ -147,9 +153,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (ficha_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, getFicha());
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(login_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, login_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -161,16 +166,13 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq)) {
+    if (!(obj instanceof cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq)) {
       return super.equals(obj);
     }
-    cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq other = (cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq) obj;
+    cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq other = (cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq) obj;
 
-    if (hasFicha() != other.hasFicha()) return false;
-    if (hasFicha()) {
-      if (!getFicha()
-          .equals(other.getFicha())) return false;
-    }
+    if (!getLogin()
+        .equals(other.getLogin())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -182,78 +184,76 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasFicha()) {
-      hash = (37 * hash) + FICHA_FIELD_NUMBER;
-      hash = (53 * hash) + getFicha().hashCode();
-    }
+    hash = (37 * hash) + LOGIN_FIELD_NUMBER;
+    hash = (53 * hash) + getLogin().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq parseFrom(
+  public static cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq parseFrom(
+  public static cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq parseFrom(
+  public static cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq parseFrom(
+  public static cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq parseFrom(byte[] data)
+  public static cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq parseFrom(
+  public static cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq parseFrom(java.io.InputStream input)
+  public static cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq parseFrom(
+  public static cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq parseDelimitedFrom(java.io.InputStream input)
+  public static cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq parseDelimitedFrom(
+  public static cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq parseFrom(
+  public static cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq parseFrom(
+  public static cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -266,7 +266,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq prototype) {
+  public static Builder newBuilder(cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -282,26 +282,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code AddFichaMedicaReq}
+   * Protobuf type {@code RetrievePersonaReq}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:AddFichaMedicaReq)
-      cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReqOrBuilder {
+      // @@protoc_insertion_point(builder_implements:RetrievePersonaReq)
+      cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReqOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return cl.ucn.disc.pdis.fivet.grpc.Fivet.internal_static_AddFichaMedicaReq_descriptor;
+      return cl.ucn.disc.pdis.fivet.grpc.Fivet.internal_static_RetrievePersonaReq_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return cl.ucn.disc.pdis.fivet.grpc.Fivet.internal_static_AddFichaMedicaReq_fieldAccessorTable
+      return cl.ucn.disc.pdis.fivet.grpc.Fivet.internal_static_RetrievePersonaReq_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq.class, cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq.Builder.class);
+              cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq.class, cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq.Builder.class);
     }
 
-    // Construct using cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq.newBuilder()
+    // Construct using cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -319,29 +319,25 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      if (fichaBuilder_ == null) {
-        ficha_ = null;
-      } else {
-        ficha_ = null;
-        fichaBuilder_ = null;
-      }
+      login_ = "";
+
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return cl.ucn.disc.pdis.fivet.grpc.Fivet.internal_static_AddFichaMedicaReq_descriptor;
+      return cl.ucn.disc.pdis.fivet.grpc.Fivet.internal_static_RetrievePersonaReq_descriptor;
     }
 
     @java.lang.Override
-    public cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq getDefaultInstanceForType() {
-      return cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq.getDefaultInstance();
+    public cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq getDefaultInstanceForType() {
+      return cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq.getDefaultInstance();
     }
 
     @java.lang.Override
-    public cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq build() {
-      cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq result = buildPartial();
+    public cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq build() {
+      cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -349,13 +345,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq buildPartial() {
-      cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq result = new cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq(this);
-      if (fichaBuilder_ == null) {
-        result.ficha_ = ficha_;
-      } else {
-        result.ficha_ = fichaBuilder_.build();
-      }
+    public cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq buildPartial() {
+      cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq result = new cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq(this);
+      result.login_ = login_;
       onBuilt();
       return result;
     }
@@ -394,18 +386,19 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq) {
-        return mergeFrom((cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq)other);
+      if (other instanceof cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq) {
+        return mergeFrom((cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq other) {
-      if (other == cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq.getDefaultInstance()) return this;
-      if (other.hasFicha()) {
-        mergeFicha(other.getFicha());
+    public Builder mergeFrom(cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq other) {
+      if (other == cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq.getDefaultInstance()) return this;
+      if (!other.getLogin().isEmpty()) {
+        login_ = other.login_;
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -422,11 +415,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq parsedMessage = null;
+      cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq) e.getUnfinishedMessage();
+        parsedMessage = (cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -436,123 +429,80 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity ficha_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity, cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity.Builder, cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntityOrBuilder> fichaBuilder_;
+    private java.lang.Object login_ = "";
     /**
-     * <code>.FichaMedicaEntity ficha = 1;</code>
-     * @return Whether the ficha field is set.
+     * <code>string login = 1;</code>
+     * @return The login.
      */
-    public boolean hasFicha() {
-      return fichaBuilder_ != null || ficha_ != null;
-    }
-    /**
-     * <code>.FichaMedicaEntity ficha = 1;</code>
-     * @return The ficha.
-     */
-    public cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity getFicha() {
-      if (fichaBuilder_ == null) {
-        return ficha_ == null ? cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity.getDefaultInstance() : ficha_;
+    public java.lang.String getLogin() {
+      java.lang.Object ref = login_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        login_ = s;
+        return s;
       } else {
-        return fichaBuilder_.getMessage();
+        return (java.lang.String) ref;
       }
     }
     /**
-     * <code>.FichaMedicaEntity ficha = 1;</code>
+     * <code>string login = 1;</code>
+     * @return The bytes for login.
      */
-    public Builder setFicha(cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity value) {
-      if (fichaBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ficha_ = value;
-        onChanged();
+    public com.google.protobuf.ByteString
+        getLoginBytes() {
+      java.lang.Object ref = login_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        login_ = b;
+        return b;
       } else {
-        fichaBuilder_.setMessage(value);
+        return (com.google.protobuf.ByteString) ref;
       }
-
-      return this;
     }
     /**
-     * <code>.FichaMedicaEntity ficha = 1;</code>
+     * <code>string login = 1;</code>
+     * @param value The login to set.
+     * @return This builder for chaining.
      */
-    public Builder setFicha(
-        cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity.Builder builderForValue) {
-      if (fichaBuilder_ == null) {
-        ficha_ = builderForValue.build();
-        onChanged();
-      } else {
-        fichaBuilder_.setMessage(builderForValue.build());
-      }
-
-      return this;
-    }
-    /**
-     * <code>.FichaMedicaEntity ficha = 1;</code>
-     */
-    public Builder mergeFicha(cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity value) {
-      if (fichaBuilder_ == null) {
-        if (ficha_ != null) {
-          ficha_ =
-            cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity.newBuilder(ficha_).mergeFrom(value).buildPartial();
-        } else {
-          ficha_ = value;
-        }
-        onChanged();
-      } else {
-        fichaBuilder_.mergeFrom(value);
-      }
-
-      return this;
-    }
-    /**
-     * <code>.FichaMedicaEntity ficha = 1;</code>
-     */
-    public Builder clearFicha() {
-      if (fichaBuilder_ == null) {
-        ficha_ = null;
-        onChanged();
-      } else {
-        ficha_ = null;
-        fichaBuilder_ = null;
-      }
-
-      return this;
-    }
-    /**
-     * <code>.FichaMedicaEntity ficha = 1;</code>
-     */
-    public cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity.Builder getFichaBuilder() {
-      
+    public Builder setLogin(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      login_ = value;
       onChanged();
-      return getFichaFieldBuilder().getBuilder();
+      return this;
     }
     /**
-     * <code>.FichaMedicaEntity ficha = 1;</code>
+     * <code>string login = 1;</code>
+     * @return This builder for chaining.
      */
-    public cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntityOrBuilder getFichaOrBuilder() {
-      if (fichaBuilder_ != null) {
-        return fichaBuilder_.getMessageOrBuilder();
-      } else {
-        return ficha_ == null ?
-            cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity.getDefaultInstance() : ficha_;
-      }
+    public Builder clearLogin() {
+      
+      login_ = getDefaultInstance().getLogin();
+      onChanged();
+      return this;
     }
     /**
-     * <code>.FichaMedicaEntity ficha = 1;</code>
+     * <code>string login = 1;</code>
+     * @param value The bytes for login to set.
+     * @return This builder for chaining.
      */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity, cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity.Builder, cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntityOrBuilder> 
-        getFichaFieldBuilder() {
-      if (fichaBuilder_ == null) {
-        fichaBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity, cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity.Builder, cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntityOrBuilder>(
-                getFicha(),
-                getParentForChildren(),
-                isClean());
-        ficha_ = null;
-      }
-      return fichaBuilder_;
+    public Builder setLoginBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      login_ = value;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(
@@ -567,41 +517,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:AddFichaMedicaReq)
+    // @@protoc_insertion_point(builder_scope:RetrievePersonaReq)
   }
 
-  // @@protoc_insertion_point(class_scope:AddFichaMedicaReq)
-  private static final cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:RetrievePersonaReq)
+  private static final cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq();
+    DEFAULT_INSTANCE = new cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq();
   }
 
-  public static cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq getDefaultInstance() {
+  public static cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<AddFichaMedicaReq>
-      PARSER = new com.google.protobuf.AbstractParser<AddFichaMedicaReq>() {
+  private static final com.google.protobuf.Parser<RetrievePersonaReq>
+      PARSER = new com.google.protobuf.AbstractParser<RetrievePersonaReq>() {
     @java.lang.Override
-    public AddFichaMedicaReq parsePartialFrom(
+    public RetrievePersonaReq parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new AddFichaMedicaReq(input, extensionRegistry);
+      return new RetrievePersonaReq(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<AddFichaMedicaReq> parser() {
+  public static com.google.protobuf.Parser<RetrievePersonaReq> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<AddFichaMedicaReq> getParserForType() {
+  public com.google.protobuf.Parser<RetrievePersonaReq> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq getDefaultInstanceForType() {
+  public cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

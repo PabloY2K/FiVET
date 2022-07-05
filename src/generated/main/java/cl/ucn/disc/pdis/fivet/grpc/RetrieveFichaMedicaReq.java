@@ -87,10 +87,10 @@ private static final long serialVersionUID = 0L;
             cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaMedicaReq.class, cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaMedicaReq.Builder.class);
   }
 
-  public static final int NUMEROFICHA_FIELD_NUMBER = 1;
+  public static final int NUMERO_FICHA_FIELD_NUMBER = 1;
   private int numeroFicha_;
   /**
-   * <code>int32 numeroFicha = 1;</code>
+   * <code>int32 numero_ficha = 1;</code>
    * @return The numeroFicha.
    */
   @java.lang.Override
@@ -156,7 +156,7 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + NUMEROFICHA_FIELD_NUMBER;
+    hash = (37 * hash) + NUMERO_FICHA_FIELD_NUMBER;
     hash = (53 * hash) + getNumeroFicha();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -402,7 +402,7 @@ private static final long serialVersionUID = 0L;
 
     private int numeroFicha_ ;
     /**
-     * <code>int32 numeroFicha = 1;</code>
+     * <code>int32 numero_ficha = 1;</code>
      * @return The numeroFicha.
      */
     @java.lang.Override
@@ -410,7 +410,7 @@ private static final long serialVersionUID = 0L;
       return numeroFicha_;
     }
     /**
-     * <code>int32 numeroFicha = 1;</code>
+     * <code>int32 numero_ficha = 1;</code>
      * @param value The numeroFicha to set.
      * @return This builder for chaining.
      */
@@ -421,7 +421,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>int32 numeroFicha = 1;</code>
+     * <code>int32 numero_ficha = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearNumeroFicha() {

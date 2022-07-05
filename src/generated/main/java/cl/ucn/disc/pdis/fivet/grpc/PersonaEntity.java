@@ -17,6 +17,7 @@ private static final long serialVersionUID = 0L;
   }
   private PersonaEntity() {
     rut_ = "";
+    password_ = "";
     nombre_ = "";
     email_ = "";
     direccion_ = "";
@@ -56,6 +57,12 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             rut_ = s;
+            break;
+          }
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            password_ = s;
             break;
           }
           case 26: {
@@ -148,13 +155,47 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int PASSWORD_FIELD_NUMBER = 2;
+  private volatile java.lang.Object password_;
+  /**
+   * <code>string password = 2;</code>
+   * @return The password.
+   */
+  @java.lang.Override
+  public java.lang.String getPassword() {
+    java.lang.Object ref = password_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      password_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string password = 2;</code>
+   * @return The bytes for password.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getPasswordBytes() {
+    java.lang.Object ref = password_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      password_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   public static final int NOMBRE_FIELD_NUMBER = 3;
   private volatile java.lang.Object nombre_;
   /**
-   * <pre>
-   * string password = 2;
-   * </pre>
-   *
    * <code>string nombre = 3;</code>
    * @return The nombre.
    */
@@ -172,10 +213,6 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <pre>
-   * string password = 2;
-   * </pre>
-   *
    * <code>string nombre = 3;</code>
    * @return The bytes for nombre.
    */
@@ -287,6 +324,9 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(rut_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, rut_);
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(password_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, password_);
+    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(nombre_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, nombre_);
     }
@@ -307,6 +347,9 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(rut_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, rut_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(password_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, password_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(nombre_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, nombre_);
@@ -334,6 +377,8 @@ private static final long serialVersionUID = 0L;
 
     if (!getRut()
         .equals(other.getRut())) return false;
+    if (!getPassword()
+        .equals(other.getPassword())) return false;
     if (!getNombre()
         .equals(other.getNombre())) return false;
     if (!getEmail()
@@ -353,6 +398,8 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + RUT_FIELD_NUMBER;
     hash = (53 * hash) + getRut().hashCode();
+    hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
+    hash = (53 * hash) + getPassword().hashCode();
     hash = (37 * hash) + NOMBRE_FIELD_NUMBER;
     hash = (53 * hash) + getNombre().hashCode();
     hash = (37 * hash) + EMAIL_FIELD_NUMBER;
@@ -494,6 +541,8 @@ private static final long serialVersionUID = 0L;
       super.clear();
       rut_ = "";
 
+      password_ = "";
+
       nombre_ = "";
 
       email_ = "";
@@ -527,6 +576,7 @@ private static final long serialVersionUID = 0L;
     public cl.ucn.disc.pdis.fivet.grpc.PersonaEntity buildPartial() {
       cl.ucn.disc.pdis.fivet.grpc.PersonaEntity result = new cl.ucn.disc.pdis.fivet.grpc.PersonaEntity(this);
       result.rut_ = rut_;
+      result.password_ = password_;
       result.nombre_ = nombre_;
       result.email_ = email_;
       result.direccion_ = direccion_;
@@ -580,6 +630,10 @@ private static final long serialVersionUID = 0L;
       if (other == cl.ucn.disc.pdis.fivet.grpc.PersonaEntity.getDefaultInstance()) return this;
       if (!other.getRut().isEmpty()) {
         rut_ = other.rut_;
+        onChanged();
+      }
+      if (!other.getPassword().isEmpty()) {
+        password_ = other.password_;
         onChanged();
       }
       if (!other.getNombre().isEmpty()) {
@@ -699,12 +753,84 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private java.lang.Object password_ = "";
+    /**
+     * <code>string password = 2;</code>
+     * @return The password.
+     */
+    public java.lang.String getPassword() {
+      java.lang.Object ref = password_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        password_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string password = 2;</code>
+     * @return The bytes for password.
+     */
+    public com.google.protobuf.ByteString
+        getPasswordBytes() {
+      java.lang.Object ref = password_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        password_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string password = 2;</code>
+     * @param value The password to set.
+     * @return This builder for chaining.
+     */
+    public Builder setPassword(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      password_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string password = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearPassword() {
+      
+      password_ = getDefaultInstance().getPassword();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string password = 2;</code>
+     * @param value The bytes for password to set.
+     * @return This builder for chaining.
+     */
+    public Builder setPasswordBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      password_ = value;
+      onChanged();
+      return this;
+    }
+
     private java.lang.Object nombre_ = "";
     /**
-     * <pre>
-     * string password = 2;
-     * </pre>
-     *
      * <code>string nombre = 3;</code>
      * @return The nombre.
      */
@@ -721,10 +847,6 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <pre>
-     * string password = 2;
-     * </pre>
-     *
      * <code>string nombre = 3;</code>
      * @return The bytes for nombre.
      */
@@ -742,10 +864,6 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <pre>
-     * string password = 2;
-     * </pre>
-     *
      * <code>string nombre = 3;</code>
      * @param value The nombre to set.
      * @return This builder for chaining.
@@ -761,10 +879,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     * string password = 2;
-     * </pre>
-     *
      * <code>string nombre = 3;</code>
      * @return This builder for chaining.
      */
@@ -775,10 +889,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     * string password = 2;
-     * </pre>
-     *
      * <code>string nombre = 3;</code>
      * @param value The bytes for nombre to set.
      * @return This builder for chaining.

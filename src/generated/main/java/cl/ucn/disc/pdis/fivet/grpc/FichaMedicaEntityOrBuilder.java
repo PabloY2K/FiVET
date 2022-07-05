@@ -8,24 +8,18 @@ public interface FichaMedicaEntityOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string numero = 1;</code>
+   * <code>int32 numero = 1;</code>
    * @return The numero.
    */
-  java.lang.String getNumero();
-  /**
-   * <code>string numero = 1;</code>
-   * @return The bytes for numero.
-   */
-  com.google.protobuf.ByteString
-      getNumeroBytes();
+  int getNumero();
 
   /**
-   * <code>string nombrePaciente = 2;</code>
+   * <code>string nombre_paciente = 2;</code>
    * @return The nombrePaciente.
    */
   java.lang.String getNombrePaciente();
   /**
-   * <code>string nombrePaciente = 2;</code>
+   * <code>string nombre_paciente = 2;</code>
    * @return The bytes for nombrePaciente.
    */
   com.google.protobuf.ByteString
@@ -44,12 +38,12 @@ public interface FichaMedicaEntityOrBuilder extends
       getEspecieBytes();
 
   /**
-   * <code>string fechaNacimiento = 4;</code>
+   * <code>string fecha_nacimiento = 4;</code>
    * @return The fechaNacimiento.
    */
   java.lang.String getFechaNacimiento();
   /**
-   * <code>string fechaNacimiento = 4;</code>
+   * <code>string fecha_nacimiento = 4;</code>
    * @return The bytes for fechaNacimiento.
    */
   com.google.protobuf.ByteString
@@ -92,16 +86,15 @@ public interface FichaMedicaEntityOrBuilder extends
       getTipoBytes();
 
   /**
-   * <code>string sexo = 8;</code>
+   * <code>.SexoEntity sexo = 8;</code>
+   * @return The enum numeric value on the wire for sexo.
+   */
+  int getSexoValue();
+  /**
+   * <code>.SexoEntity sexo = 8;</code>
    * @return The sexo.
    */
-  java.lang.String getSexo();
-  /**
-   * <code>string sexo = 8;</code>
-   * @return The bytes for sexo.
-   */
-  com.google.protobuf.ByteString
-      getSexoBytes();
+  cl.ucn.disc.pdis.fivet.grpc.SexoEntity getSexo();
 
   /**
    * <code>.PersonaEntity duenio = 9;</code>

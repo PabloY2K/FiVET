@@ -8,17 +8,17 @@ public interface FichaMedicaReplyOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>.FichaMedicaEntity fichaMedica = 1;</code>
+   * <code>.FichaMedicaEntity ficha_medica = 1;</code>
    * @return Whether the fichaMedica field is set.
    */
   boolean hasFichaMedica();
   /**
-   * <code>.FichaMedicaEntity fichaMedica = 1;</code>
+   * <code>.FichaMedicaEntity ficha_medica = 1;</code>
    * @return The fichaMedica.
    */
   cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity getFichaMedica();
   /**
-   * <code>.FichaMedicaEntity fichaMedica = 1;</code>
+   * <code>.FichaMedicaEntity ficha_medica = 1;</code>
    */
   cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntityOrBuilder getFichaMedicaOrBuilder();
 }

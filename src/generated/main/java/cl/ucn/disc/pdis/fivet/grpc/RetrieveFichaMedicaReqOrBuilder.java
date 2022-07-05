@@ -8,7 +8,7 @@ public interface RetrieveFichaMedicaReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 numeroFicha = 1;</code>
+   * <code>int32 numero_ficha = 1;</code>
    * @return The numeroFicha.
    */
   int getNumeroFicha();

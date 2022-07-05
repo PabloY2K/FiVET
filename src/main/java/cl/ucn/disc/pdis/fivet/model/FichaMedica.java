@@ -27,10 +27,7 @@ import cl.ucn.disc.pdis.fivet.orm.BaseEntity;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -50,30 +47,35 @@ public final class FichaMedica extends BaseEntity {
      * The Number of the Ficha
      */
     @Getter
+    @Setter
     @DatabaseField(canBeNull = false, unique = true)
     private Integer numeroFicha;
     /**
      * The Name of the Paciente
      */
     @Getter
+    @Setter
     @DatabaseField(canBeNull = false)
     private String nombrePaciente;
     /**
      * The Species of the Paciente
      */
     @Getter
+    @Setter
     @DatabaseField(canBeNull = false)
     private String especiePaciente;
     /**
      * The Birthday of the Paciente
      */
     @Getter
+    @Setter
     @DatabaseField(canBeNull = false)
-    private LocalDate fechaNacimiento;
+    private String fechaNacimiento;
     /**
      * The Race of the Paciente
      */
     @Getter
+    @Setter
     @DatabaseField(canBeNull = false)
     private String razaPaciente;
 
@@ -81,12 +83,14 @@ public final class FichaMedica extends BaseEntity {
      * The Color of the Paciente
      */
     @Getter
+    @Setter
     @DatabaseField(canBeNull = false)
     private String colorPaciente;
     /**
      * The Type of the Paciente
      */
     @Getter
+    @Setter
     @DatabaseField(canBeNull = false)
     private String tipoPaciente;
     /**
@@ -100,12 +104,14 @@ public final class FichaMedica extends BaseEntity {
      * The Sexo of the Paciente
      */
     @Getter
+    @Setter
     @DatabaseField(canBeNull = false)
     private Sexo sexo;
     /**
      * The Duenio of the Paciente
      */
     @Getter
+    @Setter
     @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "persona_id")
     private Persona duenio;
     /**

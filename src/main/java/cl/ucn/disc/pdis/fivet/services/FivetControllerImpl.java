@@ -24,6 +24,7 @@
 
 package cl.ucn.disc.pdis.fivet.services;
 
+import cl.ucn.disc.pdis.fivet.model.Control;
 import cl.ucn.disc.pdis.fivet.model.FichaMedica;
 import cl.ucn.disc.pdis.fivet.model.Persona;
 import cl.ucn.disc.pdis.fivet.orm.DAO;
@@ -37,6 +38,8 @@ import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -49,6 +52,8 @@ import java.util.Optional;
     public class FivetControllerImpl implements FivetController {
 
         private final DAO<Persona> daoPersona;
+
+        private final DAO<FichaMedica> fichaMedicaDAO;
 
         /**
          * The Hasher.
@@ -64,6 +69,9 @@ import java.util.Optional;
         public FivetControllerImpl(String dbUrl) {
             ConnectionSource cs = new JdbcConnectionSource(dbUrl);
             this.daoPersona = new ORMLiteDAO<>(cs,Persona.class);
+            this.fichaMedicaDAO = new ORMLiteDAO<>(cs,FichaMedica.class);
+            this.daoPersona.dropAndCreateTable();
+            this.fichaMedicaDAO.dropAndCreateTable();
         }
 
         /**
@@ -73,7 +81,7 @@ import java.util.Optional;
          * @return a Persona
          */
         @Override
-        public Optional<Persona> autenticar(String login, String passwd) {
+        public Optional<Persona> authenticate(String login, String passwd) {
             Optional<Persona> persona = this.daoPersona.get("rut", login);
 
             if (persona.isEmpty()) {
@@ -122,7 +130,51 @@ import java.util.Optional;
             return persona;
         }
 
-
+        @Override
+        public void delete(Integer id) {
+            this.daoPersona.delete(id);
         }
+
+        @Override
+        public void addPersona(Persona persona){
+            this.daoPersona.save(persona);
+        }
+        @Override
+        public void addControl(@NonNull Control control, int numeroFichaMedica) {
+            Optional<FichaMedica> fichaMedica = this.fichaMedicaDAO.get("numero", numeroFichaMedica);
+            if(fichaMedica.isPresent()) {
+                fichaMedica.get().add(control);
+            } else {
+                log.warn("The Fichamedica was not found");
+            }
+        }
+        @Override
+        public void addFichaMedica(@NonNull FichaMedica fichaMedica) {
+            this.fichaMedicaDAO.save(fichaMedica);
+        }
+        @Override
+        public Optional<FichaMedica> retrieveFichaMedica(int numeroFichaMedica) {
+            Optional<FichaMedica> fichaMedica = this.fichaMedicaDAO.get("numero", numeroFichaMedica);
+            if(fichaMedica.isEmpty()) {
+                return Optional.empty();
+            } else {
+                return fichaMedica;
+            }
+        }
+
+        @Override
+        public List<FichaMedica> retrieveAllFichaMedica() {
+            return new ArrayList<>(this.fichaMedicaDAO.getAll());
+        }
+
+
+
+
+
+    }
+
+
+
+
 
 

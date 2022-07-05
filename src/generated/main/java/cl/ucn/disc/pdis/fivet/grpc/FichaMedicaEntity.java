@@ -16,14 +16,13 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private FichaMedicaEntity() {
-    numero_ = "";
     nombrePaciente_ = "";
     especie_ = "";
     fechaNacimiento_ = "";
     raza_ = "";
     color_ = "";
     tipo_ = "";
-    sexo_ = "";
+    sexo_ = 0;
     controles_ = java.util.Collections.emptyList();
   }
 
@@ -58,10 +57,9 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
+          case 8: {
 
-            numero_ = s;
+            numero_ = input.readInt32();
             break;
           }
           case 18: {
@@ -100,10 +98,10 @@ private static final long serialVersionUID = 0L;
             tipo_ = s;
             break;
           }
-          case 66: {
-            java.lang.String s = input.readStringRequireUtf8();
+          case 64: {
+            int rawValue = input.readEnum();
 
-            sexo_ = s;
+            sexo_ = rawValue;
             break;
           }
           case 74: {
@@ -166,47 +164,20 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int NUMERO_FIELD_NUMBER = 1;
-  private volatile java.lang.Object numero_;
+  private int numero_;
   /**
-   * <code>string numero = 1;</code>
+   * <code>int32 numero = 1;</code>
    * @return The numero.
    */
   @java.lang.Override
-  public java.lang.String getNumero() {
-    java.lang.Object ref = numero_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      numero_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string numero = 1;</code>
-   * @return The bytes for numero.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getNumeroBytes() {
-    java.lang.Object ref = numero_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      numero_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public int getNumero() {
+    return numero_;
   }
 
-  public static final int NOMBREPACIENTE_FIELD_NUMBER = 2;
+  public static final int NOMBRE_PACIENTE_FIELD_NUMBER = 2;
   private volatile java.lang.Object nombrePaciente_;
   /**
-   * <code>string nombrePaciente = 2;</code>
+   * <code>string nombre_paciente = 2;</code>
    * @return The nombrePaciente.
    */
   @java.lang.Override
@@ -223,7 +194,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string nombrePaciente = 2;</code>
+   * <code>string nombre_paciente = 2;</code>
    * @return The bytes for nombrePaciente.
    */
   @java.lang.Override
@@ -279,10 +250,10 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int FECHANACIMIENTO_FIELD_NUMBER = 4;
+  public static final int FECHA_NACIMIENTO_FIELD_NUMBER = 4;
   private volatile java.lang.Object fechaNacimiento_;
   /**
-   * <code>string fechaNacimiento = 4;</code>
+   * <code>string fecha_nacimiento = 4;</code>
    * @return The fechaNacimiento.
    */
   @java.lang.Override
@@ -299,7 +270,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string fechaNacimiento = 4;</code>
+   * <code>string fecha_nacimiento = 4;</code>
    * @return The bytes for fechaNacimiento.
    */
   @java.lang.Override
@@ -432,41 +403,22 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int SEXO_FIELD_NUMBER = 8;
-  private volatile java.lang.Object sexo_;
+  private int sexo_;
   /**
-   * <code>string sexo = 8;</code>
-   * @return The sexo.
+   * <code>.SexoEntity sexo = 8;</code>
+   * @return The enum numeric value on the wire for sexo.
    */
-  @java.lang.Override
-  public java.lang.String getSexo() {
-    java.lang.Object ref = sexo_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      sexo_ = s;
-      return s;
-    }
+  @java.lang.Override public int getSexoValue() {
+    return sexo_;
   }
   /**
-   * <code>string sexo = 8;</code>
-   * @return The bytes for sexo.
+   * <code>.SexoEntity sexo = 8;</code>
+   * @return The sexo.
    */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getSexoBytes() {
-    java.lang.Object ref = sexo_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      sexo_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  @java.lang.Override public cl.ucn.disc.pdis.fivet.grpc.SexoEntity getSexo() {
+    @SuppressWarnings("deprecation")
+    cl.ucn.disc.pdis.fivet.grpc.SexoEntity result = cl.ucn.disc.pdis.fivet.grpc.SexoEntity.valueOf(sexo_);
+    return result == null ? cl.ucn.disc.pdis.fivet.grpc.SexoEntity.UNRECOGNIZED : result;
   }
 
   public static final int DUENIO_FIELD_NUMBER = 9;
@@ -549,8 +501,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(numero_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, numero_);
+    if (numero_ != 0) {
+      output.writeInt32(1, numero_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(nombrePaciente_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, nombrePaciente_);
@@ -570,8 +522,8 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(tipo_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 7, tipo_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sexo_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, sexo_);
+    if (sexo_ != cl.ucn.disc.pdis.fivet.grpc.SexoEntity.UNDEFINED.getNumber()) {
+      output.writeEnum(8, sexo_);
     }
     if (duenio_ != null) {
       output.writeMessage(9, getDuenio());
@@ -588,8 +540,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(numero_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, numero_);
+    if (numero_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(1, numero_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(nombrePaciente_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, nombrePaciente_);
@@ -609,8 +562,9 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(tipo_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, tipo_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sexo_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, sexo_);
+    if (sexo_ != cl.ucn.disc.pdis.fivet.grpc.SexoEntity.UNDEFINED.getNumber()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(8, sexo_);
     }
     if (duenio_ != null) {
       size += com.google.protobuf.CodedOutputStream
@@ -635,8 +589,8 @@ private static final long serialVersionUID = 0L;
     }
     cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity other = (cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity) obj;
 
-    if (!getNumero()
-        .equals(other.getNumero())) return false;
+    if (getNumero()
+        != other.getNumero()) return false;
     if (!getNombrePaciente()
         .equals(other.getNombrePaciente())) return false;
     if (!getEspecie()
@@ -649,8 +603,7 @@ private static final long serialVersionUID = 0L;
         .equals(other.getColor())) return false;
     if (!getTipo()
         .equals(other.getTipo())) return false;
-    if (!getSexo()
-        .equals(other.getSexo())) return false;
+    if (sexo_ != other.sexo_) return false;
     if (hasDuenio() != other.hasDuenio()) return false;
     if (hasDuenio()) {
       if (!getDuenio()
@@ -670,12 +623,12 @@ private static final long serialVersionUID = 0L;
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + NUMERO_FIELD_NUMBER;
-    hash = (53 * hash) + getNumero().hashCode();
-    hash = (37 * hash) + NOMBREPACIENTE_FIELD_NUMBER;
+    hash = (53 * hash) + getNumero();
+    hash = (37 * hash) + NOMBRE_PACIENTE_FIELD_NUMBER;
     hash = (53 * hash) + getNombrePaciente().hashCode();
     hash = (37 * hash) + ESPECIE_FIELD_NUMBER;
     hash = (53 * hash) + getEspecie().hashCode();
-    hash = (37 * hash) + FECHANACIMIENTO_FIELD_NUMBER;
+    hash = (37 * hash) + FECHA_NACIMIENTO_FIELD_NUMBER;
     hash = (53 * hash) + getFechaNacimiento().hashCode();
     hash = (37 * hash) + RAZA_FIELD_NUMBER;
     hash = (53 * hash) + getRaza().hashCode();
@@ -684,7 +637,7 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + TIPO_FIELD_NUMBER;
     hash = (53 * hash) + getTipo().hashCode();
     hash = (37 * hash) + SEXO_FIELD_NUMBER;
-    hash = (53 * hash) + getSexo().hashCode();
+    hash = (53 * hash) + sexo_;
     if (hasDuenio()) {
       hash = (37 * hash) + DUENIO_FIELD_NUMBER;
       hash = (53 * hash) + getDuenio().hashCode();
@@ -827,7 +780,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      numero_ = "";
+      numero_ = 0;
 
       nombrePaciente_ = "";
 
@@ -841,7 +794,7 @@ private static final long serialVersionUID = 0L;
 
       tipo_ = "";
 
-      sexo_ = "";
+      sexo_ = 0;
 
       if (duenioBuilder_ == null) {
         duenio_ = null;
@@ -952,9 +905,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity other) {
       if (other == cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity.getDefaultInstance()) return this;
-      if (!other.getNumero().isEmpty()) {
-        numero_ = other.numero_;
-        onChanged();
+      if (other.getNumero() != 0) {
+        setNumero(other.getNumero());
       }
       if (!other.getNombrePaciente().isEmpty()) {
         nombrePaciente_ = other.nombrePaciente_;
@@ -980,9 +932,8 @@ private static final long serialVersionUID = 0L;
         tipo_ = other.tipo_;
         onChanged();
       }
-      if (!other.getSexo().isEmpty()) {
-        sexo_ = other.sexo_;
-        onChanged();
+      if (other.sexo_ != 0) {
+        setSexoValue(other.getSexoValue());
       }
       if (other.hasDuenio()) {
         mergeDuenio(other.getDuenio());
@@ -1043,85 +994,40 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private java.lang.Object numero_ = "";
+    private int numero_ ;
     /**
-     * <code>string numero = 1;</code>
+     * <code>int32 numero = 1;</code>
      * @return The numero.
      */
-    public java.lang.String getNumero() {
-      java.lang.Object ref = numero_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        numero_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    @java.lang.Override
+    public int getNumero() {
+      return numero_;
     }
     /**
-     * <code>string numero = 1;</code>
-     * @return The bytes for numero.
-     */
-    public com.google.protobuf.ByteString
-        getNumeroBytes() {
-      java.lang.Object ref = numero_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        numero_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string numero = 1;</code>
+     * <code>int32 numero = 1;</code>
      * @param value The numero to set.
      * @return This builder for chaining.
      */
-    public Builder setNumero(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
+    public Builder setNumero(int value) {
+      
       numero_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string numero = 1;</code>
+     * <code>int32 numero = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearNumero() {
       
-      numero_ = getDefaultInstance().getNumero();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string numero = 1;</code>
-     * @param value The bytes for numero to set.
-     * @return This builder for chaining.
-     */
-    public Builder setNumeroBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      numero_ = value;
+      numero_ = 0;
       onChanged();
       return this;
     }
 
     private java.lang.Object nombrePaciente_ = "";
     /**
-     * <code>string nombrePaciente = 2;</code>
+     * <code>string nombre_paciente = 2;</code>
      * @return The nombrePaciente.
      */
     public java.lang.String getNombrePaciente() {
@@ -1137,7 +1043,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string nombrePaciente = 2;</code>
+     * <code>string nombre_paciente = 2;</code>
      * @return The bytes for nombrePaciente.
      */
     public com.google.protobuf.ByteString
@@ -1154,7 +1060,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string nombrePaciente = 2;</code>
+     * <code>string nombre_paciente = 2;</code>
      * @param value The nombrePaciente to set.
      * @return This builder for chaining.
      */
@@ -1169,7 +1075,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string nombrePaciente = 2;</code>
+     * <code>string nombre_paciente = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearNombrePaciente() {
@@ -1179,7 +1085,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string nombrePaciente = 2;</code>
+     * <code>string nombre_paciente = 2;</code>
      * @param value The bytes for nombrePaciente to set.
      * @return This builder for chaining.
      */
@@ -1273,7 +1179,7 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object fechaNacimiento_ = "";
     /**
-     * <code>string fechaNacimiento = 4;</code>
+     * <code>string fecha_nacimiento = 4;</code>
      * @return The fechaNacimiento.
      */
     public java.lang.String getFechaNacimiento() {
@@ -1289,7 +1195,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string fechaNacimiento = 4;</code>
+     * <code>string fecha_nacimiento = 4;</code>
      * @return The bytes for fechaNacimiento.
      */
     public com.google.protobuf.ByteString
@@ -1306,7 +1212,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string fechaNacimiento = 4;</code>
+     * <code>string fecha_nacimiento = 4;</code>
      * @param value The fechaNacimiento to set.
      * @return This builder for chaining.
      */
@@ -1321,7 +1227,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string fechaNacimiento = 4;</code>
+     * <code>string fecha_nacimiento = 4;</code>
      * @return This builder for chaining.
      */
     public Builder clearFechaNacimiento() {
@@ -1331,7 +1237,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string fechaNacimiento = 4;</code>
+     * <code>string fecha_nacimiento = 4;</code>
      * @param value The bytes for fechaNacimiento to set.
      * @return This builder for chaining.
      */
@@ -1575,78 +1481,56 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object sexo_ = "";
+    private int sexo_ = 0;
     /**
-     * <code>string sexo = 8;</code>
-     * @return The sexo.
+     * <code>.SexoEntity sexo = 8;</code>
+     * @return The enum numeric value on the wire for sexo.
      */
-    public java.lang.String getSexo() {
-      java.lang.Object ref = sexo_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        sexo_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    @java.lang.Override public int getSexoValue() {
+      return sexo_;
     }
     /**
-     * <code>string sexo = 8;</code>
-     * @return The bytes for sexo.
-     */
-    public com.google.protobuf.ByteString
-        getSexoBytes() {
-      java.lang.Object ref = sexo_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        sexo_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string sexo = 8;</code>
-     * @param value The sexo to set.
+     * <code>.SexoEntity sexo = 8;</code>
+     * @param value The enum numeric value on the wire for sexo to set.
      * @return This builder for chaining.
      */
-    public Builder setSexo(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
+    public Builder setSexoValue(int value) {
+      
       sexo_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string sexo = 8;</code>
+     * <code>.SexoEntity sexo = 8;</code>
+     * @return The sexo.
+     */
+    @java.lang.Override
+    public cl.ucn.disc.pdis.fivet.grpc.SexoEntity getSexo() {
+      @SuppressWarnings("deprecation")
+      cl.ucn.disc.pdis.fivet.grpc.SexoEntity result = cl.ucn.disc.pdis.fivet.grpc.SexoEntity.valueOf(sexo_);
+      return result == null ? cl.ucn.disc.pdis.fivet.grpc.SexoEntity.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.SexoEntity sexo = 8;</code>
+     * @param value The sexo to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSexo(cl.ucn.disc.pdis.fivet.grpc.SexoEntity value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      sexo_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.SexoEntity sexo = 8;</code>
      * @return This builder for chaining.
      */
     public Builder clearSexo() {
       
-      sexo_ = getDefaultInstance().getSexo();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string sexo = 8;</code>
-     * @param value The bytes for sexo to set.
-     * @return This builder for chaining.
-     */
-    public Builder setSexoBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      sexo_ = value;
+      sexo_ = 0;
       onChanged();
       return this;
     }

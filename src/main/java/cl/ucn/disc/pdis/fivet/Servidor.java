@@ -33,8 +33,11 @@ import cl.ucn.disc.pdis.fivet.grpc.PersonaReply;
 import cl.ucn.disc.pdis.fivet.model.Persona;
 import cl.ucn.disc.pdis.fivet.services.FivetControllerImpl;
 import cl.ucn.disc.pdis.fivet.services.FivetController;
+import com.google.rpc.ErrorInfo;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import io.grpc.StatusRuntimeException;
+import io.grpc.protobuf.StatusProto;
 import io.grpc.stub.StreamObserver;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -119,8 +122,9 @@ public final class Servidor {
                                         .build())
                                         .build());
                 responseObserver.onCompleted();
-                // responseObserver.onError(new RuntimeException("Persona Not Found!"));
+                responseObserver.onError(new RuntimeException("Persona Not Found!"));
             }
         }
+
     }
 }

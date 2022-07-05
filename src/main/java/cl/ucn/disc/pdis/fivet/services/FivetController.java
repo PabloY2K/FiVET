@@ -23,9 +23,12 @@
  */
 
 package cl.ucn.disc.pdis.fivet.services;
+import cl.ucn.disc.pdis.fivet.model.Control;
+import cl.ucn.disc.pdis.fivet.model.FichaMedica;
 import cl.ucn.disc.pdis.fivet.model.Persona;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -39,7 +42,7 @@ public interface FivetController {
      * @param password to login
      * @return a Persona
      */
-    Optional<Persona> autenticar(String login, String password);
+    Optional<Persona> authenticate(String login, String password);
     /**
      * Add a Persona into the backend
      * @param persona to add
@@ -47,10 +50,42 @@ public interface FivetController {
      */
     void add(Persona persona, String password);
     /**
+     * Delete a Persona from the backend
+     * @param id
+     */
+    void delete(Integer id);
+    /**
      * Retrieve a Persona by email or rut
      * @param login email or rut
      * @return a Optional Persona
      */
     Optional<Persona> retrieveByLogin(String login);
+    /**
+     * Add a Persona to the backend
+     * @param persona to add
+     */
+    void addPersona(Persona persona);
+    /**
+     * Add a control to the backend
+     * @param control to add
+     * @Param numeroFicha to attach
+     */
+    void addControl(Control control, int numeroFicha);
+    /**
+     * Add a FichaMedica to the backend
+     * @param fichamedica to add.
+     */
+    void addFichaMedica(FichaMedica fichamedica);
+    /**
+     * Retrieve a FichaMedica from backend
+     * @param numeroFichaMedica to retrieve
+     * @return a FichaMedica
+     */
+    Optional<FichaMedica> retrieveFichaMedica(int numeroFichaMedica);
+    /**
+     * Retrieve all Fichas Medicas from the backend
+     */
+    List<FichaMedica> retrieveAllFichaMedica();
+
 }
 

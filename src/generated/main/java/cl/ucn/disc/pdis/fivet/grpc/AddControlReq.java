@@ -48,7 +48,12 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
+          case 8: {
+
+            numeroFicha_ = input.readInt32();
+            break;
+          }
+          case 18: {
             cl.ucn.disc.pdis.fivet.grpc.ControlEntity.Builder subBuilder = null;
             if (control_ != null) {
               subBuilder = control_.toBuilder();
@@ -95,10 +100,21 @@ private static final long serialVersionUID = 0L;
             cl.ucn.disc.pdis.fivet.grpc.AddControlReq.class, cl.ucn.disc.pdis.fivet.grpc.AddControlReq.Builder.class);
   }
 
-  public static final int CONTROL_FIELD_NUMBER = 1;
+  public static final int NUMERO_FICHA_FIELD_NUMBER = 1;
+  private int numeroFicha_;
+  /**
+   * <code>int32 numero_ficha = 1;</code>
+   * @return The numeroFicha.
+   */
+  @java.lang.Override
+  public int getNumeroFicha() {
+    return numeroFicha_;
+  }
+
+  public static final int CONTROL_FIELD_NUMBER = 2;
   private cl.ucn.disc.pdis.fivet.grpc.ControlEntity control_;
   /**
-   * <code>.ControlEntity control = 1;</code>
+   * <code>.ControlEntity control = 2;</code>
    * @return Whether the control field is set.
    */
   @java.lang.Override
@@ -106,7 +122,7 @@ private static final long serialVersionUID = 0L;
     return control_ != null;
   }
   /**
-   * <code>.ControlEntity control = 1;</code>
+   * <code>.ControlEntity control = 2;</code>
    * @return The control.
    */
   @java.lang.Override
@@ -114,7 +130,7 @@ private static final long serialVersionUID = 0L;
     return control_ == null ? cl.ucn.disc.pdis.fivet.grpc.ControlEntity.getDefaultInstance() : control_;
   }
   /**
-   * <code>.ControlEntity control = 1;</code>
+   * <code>.ControlEntity control = 2;</code>
    */
   @java.lang.Override
   public cl.ucn.disc.pdis.fivet.grpc.ControlEntityOrBuilder getControlOrBuilder() {
@@ -135,8 +151,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (numeroFicha_ != 0) {
+      output.writeInt32(1, numeroFicha_);
+    }
     if (control_ != null) {
-      output.writeMessage(1, getControl());
+      output.writeMessage(2, getControl());
     }
     unknownFields.writeTo(output);
   }
@@ -147,9 +166,13 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (numeroFicha_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(1, numeroFicha_);
+    }
     if (control_ != null) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, getControl());
+        .computeMessageSize(2, getControl());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -166,6 +189,8 @@ private static final long serialVersionUID = 0L;
     }
     cl.ucn.disc.pdis.fivet.grpc.AddControlReq other = (cl.ucn.disc.pdis.fivet.grpc.AddControlReq) obj;
 
+    if (getNumeroFicha()
+        != other.getNumeroFicha()) return false;
     if (hasControl() != other.hasControl()) return false;
     if (hasControl()) {
       if (!getControl()
@@ -182,6 +207,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + NUMERO_FICHA_FIELD_NUMBER;
+    hash = (53 * hash) + getNumeroFicha();
     if (hasControl()) {
       hash = (37 * hash) + CONTROL_FIELD_NUMBER;
       hash = (53 * hash) + getControl().hashCode();
@@ -319,6 +346,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      numeroFicha_ = 0;
+
       if (controlBuilder_ == null) {
         control_ = null;
       } else {
@@ -351,6 +380,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public cl.ucn.disc.pdis.fivet.grpc.AddControlReq buildPartial() {
       cl.ucn.disc.pdis.fivet.grpc.AddControlReq result = new cl.ucn.disc.pdis.fivet.grpc.AddControlReq(this);
+      result.numeroFicha_ = numeroFicha_;
       if (controlBuilder_ == null) {
         result.control_ = control_;
       } else {
@@ -404,6 +434,9 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(cl.ucn.disc.pdis.fivet.grpc.AddControlReq other) {
       if (other == cl.ucn.disc.pdis.fivet.grpc.AddControlReq.getDefaultInstance()) return this;
+      if (other.getNumeroFicha() != 0) {
+        setNumeroFicha(other.getNumeroFicha());
+      }
       if (other.hasControl()) {
         mergeControl(other.getControl());
       }
@@ -436,18 +469,49 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private int numeroFicha_ ;
+    /**
+     * <code>int32 numero_ficha = 1;</code>
+     * @return The numeroFicha.
+     */
+    @java.lang.Override
+    public int getNumeroFicha() {
+      return numeroFicha_;
+    }
+    /**
+     * <code>int32 numero_ficha = 1;</code>
+     * @param value The numeroFicha to set.
+     * @return This builder for chaining.
+     */
+    public Builder setNumeroFicha(int value) {
+      
+      numeroFicha_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 numero_ficha = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearNumeroFicha() {
+      
+      numeroFicha_ = 0;
+      onChanged();
+      return this;
+    }
+
     private cl.ucn.disc.pdis.fivet.grpc.ControlEntity control_;
     private com.google.protobuf.SingleFieldBuilderV3<
         cl.ucn.disc.pdis.fivet.grpc.ControlEntity, cl.ucn.disc.pdis.fivet.grpc.ControlEntity.Builder, cl.ucn.disc.pdis.fivet.grpc.ControlEntityOrBuilder> controlBuilder_;
     /**
-     * <code>.ControlEntity control = 1;</code>
+     * <code>.ControlEntity control = 2;</code>
      * @return Whether the control field is set.
      */
     public boolean hasControl() {
       return controlBuilder_ != null || control_ != null;
     }
     /**
-     * <code>.ControlEntity control = 1;</code>
+     * <code>.ControlEntity control = 2;</code>
      * @return The control.
      */
     public cl.ucn.disc.pdis.fivet.grpc.ControlEntity getControl() {
@@ -458,7 +522,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.ControlEntity control = 1;</code>
+     * <code>.ControlEntity control = 2;</code>
      */
     public Builder setControl(cl.ucn.disc.pdis.fivet.grpc.ControlEntity value) {
       if (controlBuilder_ == null) {
@@ -474,7 +538,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.ControlEntity control = 1;</code>
+     * <code>.ControlEntity control = 2;</code>
      */
     public Builder setControl(
         cl.ucn.disc.pdis.fivet.grpc.ControlEntity.Builder builderForValue) {
@@ -488,7 +552,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.ControlEntity control = 1;</code>
+     * <code>.ControlEntity control = 2;</code>
      */
     public Builder mergeControl(cl.ucn.disc.pdis.fivet.grpc.ControlEntity value) {
       if (controlBuilder_ == null) {
@@ -506,7 +570,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.ControlEntity control = 1;</code>
+     * <code>.ControlEntity control = 2;</code>
      */
     public Builder clearControl() {
       if (controlBuilder_ == null) {
@@ -520,7 +584,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.ControlEntity control = 1;</code>
+     * <code>.ControlEntity control = 2;</code>
      */
     public cl.ucn.disc.pdis.fivet.grpc.ControlEntity.Builder getControlBuilder() {
       
@@ -528,7 +592,7 @@ private static final long serialVersionUID = 0L;
       return getControlFieldBuilder().getBuilder();
     }
     /**
-     * <code>.ControlEntity control = 1;</code>
+     * <code>.ControlEntity control = 2;</code>
      */
     public cl.ucn.disc.pdis.fivet.grpc.ControlEntityOrBuilder getControlOrBuilder() {
       if (controlBuilder_ != null) {
@@ -539,7 +603,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.ControlEntity control = 1;</code>
+     * <code>.ControlEntity control = 2;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         cl.ucn.disc.pdis.fivet.grpc.ControlEntity, cl.ucn.disc.pdis.fivet.grpc.ControlEntity.Builder, cl.ucn.disc.pdis.fivet.grpc.ControlEntityOrBuilder> 

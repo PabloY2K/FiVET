@@ -8,14 +8,17 @@ public interface AddFichaMedicaReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string ficha = 1;</code>
+   * <code>.FichaMedicaEntity ficha = 1;</code>
+   * @return Whether the ficha field is set.
+   */
+  boolean hasFicha();
+  /**
+   * <code>.FichaMedicaEntity ficha = 1;</code>
    * @return The ficha.
    */
-  java.lang.String getFicha();
+  cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity getFicha();
   /**
-   * <code>string ficha = 1;</code>
-   * @return The bytes for ficha.
+   * <code>.FichaMedicaEntity ficha = 1;</code>
    */
-  com.google.protobuf.ByteString
-      getFichaBytes();
+  cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntityOrBuilder getFichaOrBuilder();
 }

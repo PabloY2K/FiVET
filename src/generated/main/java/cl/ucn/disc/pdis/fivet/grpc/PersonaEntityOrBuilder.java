@@ -20,19 +20,23 @@ public interface PersonaEntityOrBuilder extends
       getRutBytes();
 
   /**
-   * <pre>
-   * string password = 2;
-   * </pre>
-   *
+   * <code>string password = 2;</code>
+   * @return The password.
+   */
+  java.lang.String getPassword();
+  /**
+   * <code>string password = 2;</code>
+   * @return The bytes for password.
+   */
+  com.google.protobuf.ByteString
+      getPasswordBytes();
+
+  /**
    * <code>string nombre = 3;</code>
    * @return The nombre.
    */
   java.lang.String getNombre();
   /**
-   * <pre>
-   * string password = 2;
-   * </pre>
-   *
    * <code>string nombre = 3;</code>
    * @return The bytes for nombre.
    */

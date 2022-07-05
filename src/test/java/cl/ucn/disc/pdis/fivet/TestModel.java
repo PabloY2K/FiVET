@@ -110,7 +110,7 @@ public final class TestModel {
                         .numeroFicha(50)
                         .nombrePaciente("Milu")
                         .especiePaciente("Perro")
-                        .fechaNacimiento(LocalDate.now())
+                        .fechaNacimiento("12/12/10")
                         .razaPaciente("Quiltro")
                         .colorPaciente("Blanco con manchas cafe")
                         .tipoPaciente("Adulto")
