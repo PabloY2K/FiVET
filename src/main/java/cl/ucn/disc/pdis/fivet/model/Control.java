@@ -27,12 +27,16 @@ package cl.ucn.disc.pdis.fivet.model;
 import cl.ucn.disc.pdis.fivet.orm.BaseEntity;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.ZonedDateTime;
 
 /**
- * The Control
+ * The Control Class.
  *
  * @author pablo
  */
@@ -41,21 +45,20 @@ import java.time.ZonedDateTime;
 @AllArgsConstructor
 @DatabaseTable
 public final class Control extends BaseEntity {
-
     /**
-     * The Fecha
+     * The Fecha.
      */
     @Getter
     @DatabaseField(canBeNull = false)
     private ZonedDateTime fecha;
     /**
-     *The Temperatura
+     *The Temperatura.
      */
     @Getter
     @DatabaseField(canBeNull = false)
     private Double temperatura;
     /**
-     * The Peso
+     * The Peso.
      */
     @Getter
     @DatabaseField(canBeNull = false)
@@ -74,17 +77,16 @@ public final class Control extends BaseEntity {
     @DatabaseField(canBeNull = false)
     private String dignostico;
     /**
-     * The Veterinario
+     * The Veterinario.
      */
     @Getter
     @Setter
     @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "veterinario_id")
     private Persona veterinario;
     /**
-     * The Ficha Medica
+     * The Ficha Medica.
      */
     @Getter
     @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "fichamedica_id")
     private FichaMedica fichaMedica;
-
 }

@@ -24,7 +24,18 @@
 
 package cl.ucn.disc.pdis.fivet.services;
 
-import cl.ucn.disc.pdis.fivet.grpc.*;
+import cl.ucn.disc.pdis.fivet.grpc.AddControlReq;
+import cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq;
+import cl.ucn.disc.pdis.fivet.grpc.AddPersonaReq;
+import cl.ucn.disc.pdis.fivet.grpc.AuthenticateReq;
+import cl.ucn.disc.pdis.fivet.grpc.ControlEntity;
+import cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity;
+import cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply;
+import cl.ucn.disc.pdis.fivet.grpc.FivetServiceGrpc;
+import cl.ucn.disc.pdis.fivet.grpc.PersonaEntity;
+import cl.ucn.disc.pdis.fivet.grpc.PersonaReply;
+import cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaMedicaReq;
+import cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq;
 import cl.ucn.disc.pdis.fivet.model.Control;
 import cl.ucn.disc.pdis.fivet.model.FichaMedica;
 import cl.ucn.disc.pdis.fivet.model.ModelAdapter;
@@ -43,20 +54,27 @@ import java.util.Optional;
 
 import static org.apache.commons.lang3.StringUtils.isNumeric;
 
+/**
+ * The FivetServiceImpl Class.
+ *
+ * @author pablo
+ */
+
 @Slf4j
 public class FivetServiceImpl extends FivetServiceGrpc.FivetServiceImplBase {
 
     private final FivetController fivetController;
 
-    public FivetServiceImpl (String databaseUrl) {
+    public FivetServiceImpl(String databaseUrl) {
         this.fivetController = new FivetControllerImpl(databaseUrl);
     }
+
     /**
-     * Build a StatusRuntimeException with a message
+     * Build a StatusRuntimeException with a message.
      *
-     * @param code code to use.
+     * @param code    code to use.
      * @param message message to use.
-     * @return the {@Link StatusRunTimeException}
+     * @return the StatusRunTimeException
      */
     private static StatusRuntimeException buildException(final Code code, final String message) {
         return StatusProto.toStatusRuntimeException(Status.newBuilder()
@@ -90,16 +108,16 @@ public class FivetServiceImpl extends FivetServiceGrpc.FivetServiceImplBase {
         Optional<Persona> optionalPersona = this.fivetController.retrieveByLogin(personaEntity.getEmail());
         optionalPersona.ifPresentOrElse(persona ->
                 responseObserver.onError(buildException(Code.ALREADY_EXISTS, "That Persona already exists")), () -> {
-            Optional<Persona> optionalPersona1 = this.fivetController.retrieveByLogin(personaEntity.getRut());
-            optionalPersona1.ifPresentOrElse(persona ->
-                    responseObserver.onError(buildException(Code.ALREADY_EXISTS, "That Persona already exists")), () -> {
-                Persona persona = ModelAdapter.build(personaEntity);
-                this.fivetController.add(persona,persona.getPassword());
-                responseObserver.onNext(PersonaReply.newBuilder()
-                        .setPersona(ModelAdapter.build(persona))
-                        .build());
-            });
-        });
+                Optional<Persona> optionalPersona1 = this.fivetController.retrieveByLogin(personaEntity.getRut());
+                optionalPersona1.ifPresentOrElse(persona ->
+                    responseObserver.onError(buildException(Code.ALREADY_EXISTS,
+                            "That Persona already exists")), () -> {
+                        Persona persona = ModelAdapter.build(personaEntity);
+                        this.fivetController.add(persona, persona.getPassword());
+                        responseObserver.onNext(PersonaReply.newBuilder()
+                            .setPersona(ModelAdapter.build(persona))
+                            .build());                });
+                });
     }
 
     @Override
@@ -111,7 +129,7 @@ public class FivetServiceImpl extends FivetServiceGrpc.FivetServiceImplBase {
             Optional<Persona> optionalVeterinario =
                     this.fivetController.retrieveByLogin(controlEntity.getVeterinario().getRut());
             optionalVeterinario.ifPresentOrElse(veterinario -> {
-                control.setVeterinario(veterinario); //ARREGLALASDJKASHLKFJAHSLJFJLKADSHFJKDSHFLJHASDLJFKHDLSKFHLKAJDSHFLDJSKHFSADJK
+                control.setVeterinario(veterinario);
                 this.fivetController.addControl(control, fichaMedica.getNumeroFicha());
                 responseObserver.onNext(FichaMedicaReply.newBuilder()
                         .setFichaMedica(ModelAdapter.build(fichaMedica))
@@ -149,12 +167,14 @@ public class FivetServiceImpl extends FivetServiceGrpc.FivetServiceImplBase {
 
                     FichaMedica fichaMedica = ModelAdapter.build(fichaMedicaEntity);
 
-                    Optional<Persona> optionalDuenio = this.fivetController.retrieveByLogin(fichaMedica.getDuenio().getRut());
+                    Optional<Persona> optionalDuenio =
+                            this.fivetController.retrieveByLogin(fichaMedica.getDuenio().getRut());
 
                     optionalDuenio.ifPresentOrElse(fichaMedica::setDuenio, () -> {
 
                         this.fivetController.addPersona(fichaMedica.getDuenio());
-                        Optional<Persona> duenio = this.fivetController.retrieveByLogin(fichaMedica.getDuenio().getRut());
+                        Optional<Persona> duenio =
+                                this.fivetController.retrieveByLogin(fichaMedica.getDuenio().getRut());
 
                         duenio.ifPresent(fichaMedica::setDuenio);
                     });
@@ -170,7 +190,13 @@ public class FivetServiceImpl extends FivetServiceGrpc.FivetServiceImplBase {
                     responseObserver.onCompleted();
                 });
     }
-    //Metabuscador
+
+    /**
+     * Metabuscador.
+     *
+     * @param request q to use
+     * @param responseObserver of FichaMedicaReply
+     */
     public void searchFichaMedica(SearchFichaMedicaReq request, StreamObserver<FichaMedicaReply> responseObserver) {
         String metadata = request.getQ();
 
@@ -228,14 +254,4 @@ public class FivetServiceImpl extends FivetServiceGrpc.FivetServiceImplBase {
             }
         }
     }
-
-
-
-
-
-
-
-
-
-
 }

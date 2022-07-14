@@ -25,19 +25,15 @@
 package cl.ucn.disc.pdis.fivet;
 
 
-
 import cl.ucn.disc.pdis.fivet.grpc.AuthenticateReq;
 import cl.ucn.disc.pdis.fivet.grpc.FivetServiceGrpc;
 import cl.ucn.disc.pdis.fivet.grpc.PersonaEntity;
 import cl.ucn.disc.pdis.fivet.grpc.PersonaReply;
 import cl.ucn.disc.pdis.fivet.model.Persona;
-import cl.ucn.disc.pdis.fivet.services.FivetControllerImpl;
 import cl.ucn.disc.pdis.fivet.services.FivetController;
-import com.google.rpc.ErrorInfo;
+import cl.ucn.disc.pdis.fivet.services.FivetControllerImpl;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
-import io.grpc.StatusRuntimeException;
-import io.grpc.protobuf.StatusProto;
 import io.grpc.stub.StreamObserver;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -45,13 +41,14 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.Optional;
 
 /**
- * The Server of Fivet
+ * The Server of Fivet.
+ *
  * @author pablo
  */
 @Slf4j
 public final class Servidor {
     /**
-     * The Main
+     * The Main.
      */
     @SneakyThrows
     public static void main(String[] args) {
@@ -73,7 +70,7 @@ public final class Servidor {
     }
 
     /**
-     * The Fivet Implementation
+     * The Fivet Implementation.
      */
     @Slf4j
     private static class FivetServiceImpl extends FivetServiceGrpc.FivetServiceImplBase {
@@ -85,7 +82,7 @@ public final class Servidor {
         /**
          * The FivetService.
          *
-         * @param databaseUrl
+         * @param databaseUrl to use
          */
         public FivetServiceImpl(String databaseUrl) {
             this.fivetController = new FivetControllerImpl(databaseUrl);
@@ -93,15 +90,16 @@ public final class Servidor {
         /**
          * Authenticate.
          *
-         * @param request
-         * @param responseObserver
+         * @param request to use
+         * @param responseObserver StreamObserver of PersonaReply
          */
+
         @Override
         public void authenticate(AuthenticateReq request, StreamObserver<PersonaReply> responseObserver) {
             // Retrieve from Controller
             Optional<Persona> persona = this.fivetController.retrieveByLogin(request.getLogin());
 
-            if(persona.isPresent()) {
+            if (persona.isPresent()) {
                 //Return the observer
                 responseObserver.onNext(PersonaReply.newBuilder()
                                 .setPersona(PersonaEntity.newBuilder()

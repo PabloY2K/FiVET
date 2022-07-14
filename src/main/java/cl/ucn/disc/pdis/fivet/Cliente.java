@@ -23,9 +23,22 @@
  */
 
 package cl.ucn.disc.pdis.fivet;
-import cl.ucn.disc.pdis.fivet.grpc.*;
-import cl.ucn.disc.pdis.fivet.model.FichaMedica;
-import cl.ucn.disc.pdis.fivet.model.Persona;
+
+
+import cl.ucn.disc.pdis.fivet.grpc.AddControlReq;
+import cl.ucn.disc.pdis.fivet.grpc.AddFichaMedicaReq;
+import cl.ucn.disc.pdis.fivet.grpc.AddPersonaReq;
+import cl.ucn.disc.pdis.fivet.grpc.AuthenticateReq;
+import cl.ucn.disc.pdis.fivet.grpc.ControlEntity;
+import cl.ucn.disc.pdis.fivet.grpc.FichaMedicaEntity;
+import cl.ucn.disc.pdis.fivet.grpc.FichaMedicaReply;
+import cl.ucn.disc.pdis.fivet.grpc.FivetServiceGrpc;
+import cl.ucn.disc.pdis.fivet.grpc.PersonaEntity;
+import cl.ucn.disc.pdis.fivet.grpc.PersonaReply;
+import cl.ucn.disc.pdis.fivet.grpc.RetrieveFichaMedicaReq;
+import cl.ucn.disc.pdis.fivet.grpc.RetrievePersonaReq;
+import cl.ucn.disc.pdis.fivet.grpc.SearchFichaMedicaReq;
+import cl.ucn.disc.pdis.fivet.grpc.SexoEntity;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
@@ -36,7 +49,7 @@ import java.util.Iterator;
 
 
 /**
- * The Client of Fivet
+ * The Client of Fivet.
  *
  * @author pablo
  */
@@ -142,7 +155,7 @@ public final class Cliente {
             Iterator<FichaMedicaReply> fichaMedicaReply = stub.searchFichaMedica(SearchFichaMedicaReq.newBuilder()
                     .setQ("1")
                     .build());
-            while(fichaMedicaReply.hasNext()) {
+            while (fichaMedicaReply.hasNext()) {
                 log.debug("FichaMedica from SearchFichaMedica: {}", fichaMedicaReply.next().getFichaMedica());
             }
 

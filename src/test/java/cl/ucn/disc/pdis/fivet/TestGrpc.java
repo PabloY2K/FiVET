@@ -57,11 +57,11 @@ public final class TestGrpc {
     public void testGrpc(Resources resources) throws IOException {
         log.debug("Starting TestGrpc...");
 
-        //Unique server name
+        // Unique server name
         String serverName = InProcessServerBuilder.generateName();
         log.debug("Testing serverName <{}> ...");
 
-        //Initialize the server
+        // Initialize the server
         Server server = InProcessServerBuilder
                 .forName(serverName)
                 .directExecutor()

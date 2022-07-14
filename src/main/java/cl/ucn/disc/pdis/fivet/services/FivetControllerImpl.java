@@ -35,7 +35,6 @@ import lombok.NonNull;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.ArrayList;
@@ -43,135 +42,137 @@ import java.util.List;
 import java.util.Optional;
 
 
+/**
+ * The Fivet Controller Implementation.
+ *
+ * @author pablo
+ */
+@Slf4j
+public class FivetControllerImpl implements FivetController {
+    private final DAO<Persona> daoPersona;
+    private final DAO<FichaMedica> fichaMedicaDAO;
+
     /**
-     * The Fivet Controller Implementation
-     *
-     * @author pablo
+     * The Hasher.
      */
-    @Slf4j
-    public class FivetControllerImpl implements FivetController {
 
-        private final DAO<Persona> daoPersona;
+    private static final PasswordEncoder PASSWORD_ENCODER = new Argon2PasswordEncoder();
 
-        private final DAO<FichaMedica> fichaMedicaDAO;
+    /**
+     * The FivetControllerImpl Constructor.
+     *
+     * @param dbUrl to connect
+     */
+    @SneakyThrows
+    public FivetControllerImpl(String dbUrl) {
+        ConnectionSource cs = new JdbcConnectionSource(dbUrl);
+        this.daoPersona = new ORMLiteDAO<>(cs, Persona.class);
+        this.fichaMedicaDAO = new ORMLiteDAO<>(cs, FichaMedica.class);
+        this.daoPersona.dropAndCreateTable();
+        this.fichaMedicaDAO.dropAndCreateTable();
+    }
 
-        /**
-         * The Hasher.
-         */
+    /**
+     * Authentication of a person in the system.
+     *
+     * @param login  The login account
+     * @param passwd The password of the user
+     * @return a Persona
+     */
+    @Override
+    public Optional<Persona> authenticate(String login, String passwd) {
+        Optional<Persona> persona = this.daoPersona.get("rut", login);
 
-        private final static PasswordEncoder PASSWORD_ENCODER = new Argon2PasswordEncoder();
-
-        /**
-         * The FivetControllerImpl Constructor
-         * @param dbUrl to connect
-         */
-        @SneakyThrows
-        public FivetControllerImpl(String dbUrl) {
-            ConnectionSource cs = new JdbcConnectionSource(dbUrl);
-            this.daoPersona = new ORMLiteDAO<>(cs,Persona.class);
-            this.fichaMedicaDAO = new ORMLiteDAO<>(cs,FichaMedica.class);
-            this.daoPersona.dropAndCreateTable();
-            this.fichaMedicaDAO.dropAndCreateTable();
+        if (persona.isEmpty()) {
+            persona = this.daoPersona.get("email", login);
         }
-
-        /**
-         * Authentication of a person in the system
-         * @param login The login account
-         * @param passwd The password of the user
-         * @return a Persona
-         */
-        @Override
-        public Optional<Persona> authenticate(String login, String passwd) {
-            Optional<Persona> persona = this.daoPersona.get("rut", login);
-
-            if (persona.isEmpty()) {
-                persona = this.daoPersona.get("email", login);
-            }
-            if (persona.isEmpty()) {
-                return Optional.empty();
-            }
-
-            if (PASSWORD_ENCODER.matches(persona.get().getPassword(), passwd)) {
-                return Optional.empty();
-            }
-
-            log.warn("Incorrect password");
+        if (persona.isEmpty()) {
             return Optional.empty();
         }
 
-        /**
-         * Add a Persona into the backend
-         *
-         * @param persona  to add
-         * @param password to hash
-         */
-        @Override
-        public void add(@NonNull Persona persona, @NonNull String password) {
-            // Hash Password
-            persona.setPassword(PASSWORD_ENCODER.encode(password));
-            //Save the Persona
-            this.daoPersona.save(persona);
-        }
-        /**
-         * Retrieve a Persona by email or rut
-         * @param login email or rut
-         * @return a Optional Persona
-         */
-        @Override
-        public Optional<Persona> retrieveByLogin(String login) {
-            Optional<Persona> persona = this.daoPersona.get("rut", login);
-
-            if (persona.isEmpty()) {
-                persona = this.daoPersona.get("email", login);
-            }
-            if (persona.isEmpty()) {
-                return Optional.empty();
-            }
-            return persona;
+        if (PASSWORD_ENCODER.matches(persona.get().getPassword(), passwd)) {
+            return Optional.empty();
         }
 
-        @Override
-        public void delete(Integer id) {
-            this.daoPersona.delete(id);
-        }
-
-        @Override
-        public void addPersona(Persona persona){
-            this.daoPersona.save(persona);
-        }
-        @Override
-        public void addControl(@NonNull Control control, int numeroFichaMedica) {
-            Optional<FichaMedica> fichaMedica = this.fichaMedicaDAO.get("numero", numeroFichaMedica);
-            if(fichaMedica.isPresent()) {
-                fichaMedica.get().add(control);
-            } else {
-                log.warn("The Fichamedica was not found");
-            }
-        }
-        @Override
-        public void addFichaMedica(@NonNull FichaMedica fichaMedica) {
-            this.fichaMedicaDAO.save(fichaMedica);
-        }
-        @Override
-        public Optional<FichaMedica> retrieveFichaMedica(int numeroFichaMedica) {
-            Optional<FichaMedica> fichaMedica = this.fichaMedicaDAO.get("numero", numeroFichaMedica);
-            if(fichaMedica.isEmpty()) {
-                return Optional.empty();
-            } else {
-                return fichaMedica;
-            }
-        }
-
-        @Override
-        public List<FichaMedica> retrieveAllFichaMedica() {
-            return new ArrayList<>(this.fichaMedicaDAO.getAll());
-        }
-
-
-
-
-
+        log.warn("Incorrect password");
+        return Optional.empty();
     }
+
+    /**
+     * Add a Persona into the backend.
+     *
+     * @param persona  to add
+     * @param password to hash
+     */
+    @Override
+    public void add(@NonNull Persona persona, @NonNull String password) {
+        // Hash Password
+        persona.setPassword(PASSWORD_ENCODER.encode(password));
+        //Save the Persona
+        this.daoPersona.save(persona);
+    }
+
+    /**
+     * Retrieve a Persona by email or rut.
+     *
+     * @param login email or rut
+     * @return a Optional Persona
+     */
+    @Override
+    public Optional<Persona> retrieveByLogin(String login) {
+        Optional<Persona> persona = this.daoPersona.get("rut", login);
+
+        if (persona.isEmpty()) {
+            persona = this.daoPersona.get("email", login);
+        }
+        if (persona.isEmpty()) {
+            return Optional.empty();
+        }
+        return persona;
+    }
+
+    @Override
+    public void delete(Integer id) {
+        this.daoPersona.delete(id);
+    }
+
+    @Override
+    public void addPersona(Persona persona) {
+        this.daoPersona.save(persona);
+    }
+
+    @Override
+    public void addControl(@NonNull Control control, int numeroFichaMedica) {
+        Optional<FichaMedica> fichaMedica = this.fichaMedicaDAO.get("numero", numeroFichaMedica);
+        if (fichaMedica.isPresent()) {
+            fichaMedica.get().add(control);
+        } else {
+            log.warn("The Fichamedica was not found");
+        }
+    }
+
+    @Override
+    public void addFichaMedica(@NonNull FichaMedica fichaMedica) {
+        this.fichaMedicaDAO.save(fichaMedica);
+    }
+
+    @Override
+    public Optional<FichaMedica> retrieveFichaMedica(int numeroFichaMedica) {
+        Optional<FichaMedica> fichaMedica = this.fichaMedicaDAO.get("numero", numeroFichaMedica);
+        if (fichaMedica.isEmpty()) {
+            return Optional.empty();
+        } else {
+            return fichaMedica;
+        }
+    }
+
+    @Override
+    public List<FichaMedica> retrieveAllFichaMedica() {
+        return new ArrayList<>(this.fichaMedicaDAO.getAll());
+    }
+
+
+}
 
 
 

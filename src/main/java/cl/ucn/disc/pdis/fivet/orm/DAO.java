@@ -23,14 +23,16 @@
  */
 
 package cl.ucn.disc.pdis.fivet.orm;
+
 import java.util.List;
 import java.util.Optional;
 
 /**
- * Data Access Object: DAO
+ * Data Access Object: DAO.
+ *
  * @author pablo
  */
-public interface DAO <T extends BaseEntity> {
+public interface DAO<T extends BaseEntity> {
 
     /**
      * Get optional T.
@@ -38,9 +40,10 @@ public interface DAO <T extends BaseEntity> {
     Optional<T> get(Integer id);
 
     /**
-     *  Optional T with attribute and value
-     * @param attrib
-     * @param value
+     *  Optional T with attribute and value.
+     *
+     * @param attrib to use.
+     * @param value to use.
      * @return optional T
      */
     Optional<T> get(String attrib, Object value);
@@ -52,18 +55,21 @@ public interface DAO <T extends BaseEntity> {
 
     /**
      * Save a T.
-     * @param t to save
+     *
+     * @param t to save.
      */
     void save(T t);
 
     /**
      * Delete a T.
+     *
      * @param t to delete.
      */
     void delete(T t);
 
     /**
      * Delete a T.
+     *
      * @param id of the t to delete;
      */
     void delete(Integer id);

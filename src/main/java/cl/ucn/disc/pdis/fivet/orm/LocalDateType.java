@@ -29,21 +29,26 @@ import com.j256.ormlite.field.SqlType;
 import com.j256.ormlite.field.types.BaseDataType;
 import com.j256.ormlite.support.DatabaseResults;
 import lombok.extern.slf4j.Slf4j;
-
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
+/**
+ * LocalDateType Class.
+ *
+ * @author pablo
+ */
 
 @Slf4j
 public final class LocalDateType extends BaseDataType {
 
     /**
-     * Singleton!
+     * Singleton.
      */
     public static final LocalDateType INSTANCE = new LocalDateType();
 
     /**
-     * The formatter (ZonedDateTime -- String)
+     * The formatter (ZonedDateTime -- String).
      */
     private static final DateTimeFormatter LD = DateTimeFormatter.ISO_LOCAL_DATE;
 
@@ -53,13 +58,15 @@ public final class LocalDateType extends BaseDataType {
     private static final int DEFAULT_WIDTH = 100;
 
     /**
-     * The private constructor
+     * The private constructor.
      */
     private LocalDateType() {
         super(SqlType.STRING, new Class<?>[]{LocalDate.class});
     }
 
     /**
+     * Default Width.
+     *
      * @return the size of the database field
      */
     @Override
@@ -77,19 +84,20 @@ public final class LocalDateType extends BaseDataType {
     }
 
     /**
-     * The Java to SQL converter
+     * The Java to SQL converter.
      */
     @Override
     public Object javaToSqlArg(FieldType fieldType, Object javaObject) {
         LocalDate ld = (LocalDate) javaObject;
-        if (ld == null) return null;
+        if (ld == null) {
+            return null;
+        }
         return LD.format(ld);
     }
 
     /**
      * Return the SQL argument object extracted from the results associated with column in position columnPos.
      *
-     * example, if the type is a date-long then this will return a long value or null
      */
     @Override
     public Object resultToSqlArg(FieldType fieldType, DatabaseResults results, int columnPos) throws SQLException {
@@ -97,13 +105,13 @@ public final class LocalDateType extends BaseDataType {
     }
 
     /**
-     * The SQL to Java converter
+     * The SQL to Java converter.
      */
     @Override
     public Object sqlArgToJava(FieldType fieldType, Object sqlArg, int columnPos) {
-        if (sqlArg == null) return null;
+        if (sqlArg == null) {
+            return null;
+        }
         return LocalDate.parse((String) sqlArg, LD);
     }
-
-
 }

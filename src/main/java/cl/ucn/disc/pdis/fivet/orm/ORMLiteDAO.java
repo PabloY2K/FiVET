@@ -34,7 +34,6 @@ import com.j256.ormlite.table.TableUtils;
 import lombok.NonNull;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-
 import java.sql.SQLException;
 import java.time.ZonedDateTime;
 import java.util.List;
@@ -46,7 +45,7 @@ import java.util.Optional;
  * @author pablo
  */
 @Slf4j
-public final class ORMLiteDAO <T extends BaseEntity> implements DAO<T> {
+public final class ORMLiteDAO<T extends BaseEntity> implements DAO<T> {
     static {
         log.debug("Registering the ZonedDateTimeType...");
         DataPersisterManager.registerDataPersisters(ZonedDateTimeType.INSTANCE);
@@ -54,8 +53,9 @@ public final class ORMLiteDAO <T extends BaseEntity> implements DAO<T> {
         DataPersisterManager.registerDataPersisters(LocalDateType.INSTANCE);
     }
     /**
-     * The real DAO (connection to ORMLite DAO)
+     * The real DAO (connection to ORMLite DAO).
      */
+
     private final Dao<T, Integer> theDAO;
 
     private static ConnectionSource cs;
@@ -67,10 +67,12 @@ public final class ORMLiteDAO <T extends BaseEntity> implements DAO<T> {
      * @param clazz the type of T.
      */
     @SneakyThrows(SQLException.class)
-    public ORMLiteDAO(@NonNull final ConnectionSource cs,@NonNull final Class<T> clazz) {
+    public ORMLiteDAO(@NonNull final ConnectionSource cs,
+                      @NonNull final Class<T> clazz) {
         this.theDAO = DaoManager.createDao(cs, clazz);
         ORMLiteDAO.cs = cs;
     }
+
     @SneakyThrows
     public static ConnectionSource buildConnectionSource(String s) {
         cs = new JdbcConnectionSource(s);

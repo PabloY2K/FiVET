@@ -35,7 +35,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- *  The ZoneDateTime to Database VARCHAR converter.
+ * The ZoneDateTime to Database VARCHAR converter.
  *
  * @author pablo
  */
@@ -44,23 +44,22 @@ import java.time.format.DateTimeFormatter;
 public final class ZonedDateTimeType extends BaseDataType {
 
     /**
-     * Singleton!
+     * Singleton.
      */
     public static final ZonedDateTimeType INSTANCE = new ZonedDateTimeType();
 
     /**
-     * The formatter (ZonedDateTime -- String)
-     *
+     * The formatter (ZonedDateTime -- String).
      */
     private static final DateTimeFormatter DTF = DateTimeFormatter.ISO_ZONED_DATE_TIME;
 
     /**
-     * The Size of the String: 2022-04-08T18:10:56-1160769-04:00[America/Santiago]
+     * The Size of the String: 2022-04-08T18:10:56-1160769-04:00[America/Santiago].
      */
     private static final int DEFAULT_WIDTH = 100;
 
     /**
-     * The private constructor
+     * The private constructor.
      */
     private ZonedDateTimeType() {
         super(SqlType.STRING, new Class<?>[]{ZonedDateTimeType.class});
@@ -68,30 +67,36 @@ public final class ZonedDateTimeType extends BaseDataType {
     }
 
     /**
+     * DefaultWidth.
+     *
      * @return the size of the database field.
      */
     @Override
     public int getDefaultWidth() {
         return DEFAULT_WIDTH;
     }
+
     /**
-     * Convert a default string object and return the appropriate argument to a SQL insert or update statement
+     * Convert a default string object and return the appropriate argument to a SQL insert or update statement.
      */
     @Override
-    public Object parseDefaultString(FieldType fieldtype, String defaultStr){
+    public Object parseDefaultString(FieldType fieldtype, String defaultStr) {
         log.debug("parseDefaultString: {} -> {}", fieldtype, defaultStr);
         return defaultStr;
     }
 
     /**
-     * The Java to SQL converter
+     * The Java to SQL converter.
      */
     @Override
     public Object javaToSqlArg(FieldType fieldType, Object javaObject) {
         ZonedDateTime zdt = (ZonedDateTime) javaObject;
-        if (zdt == null) return null;
+        if (zdt == null) {
+            return null;
+        }
         return DTF.format(zdt);
     }
+
     /**
      * Return the SQL argument object extracted from the result associated with column in position columPos.
      * For example, if the type is a date-long then this will return a long value or null.
@@ -100,12 +105,15 @@ public final class ZonedDateTimeType extends BaseDataType {
     public Object resultToSqlArg(FieldType fieldType, DatabaseResults results, int columnPos) throws SQLException {
         return results.getString(columnPos);
     }
+
     /**
-     * The SQL to Java converter
+     * The SQL to Java converter.
      */
     @Override
     public Object sqlArgToJava(FieldType fieldType, Object sqlArg, int columnPos) {
-        if (sqlArg == null) return null;
+        if (sqlArg == null) {
+            return null;
+        }
         return ZonedDateTime.parse((String) sqlArg, DTF);
     }
 

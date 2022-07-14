@@ -30,11 +30,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.time.ZonedDateTime;
 
 /**
- * The Base Entity
+ * The Base Entity Class.
  *
  * @author pablo
  */
