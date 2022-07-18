@@ -44,6 +44,8 @@ import java.time.Duration;
 
 /**
  * Test the gRPC
+ *
+ * @author pablo
  */
 @Slf4j
 @ExtendWith(GrpcCleanupExtension.class)

@@ -79,7 +79,7 @@ public final class Persona extends BaseEntity {
      */
     @Getter
     @Setter
-    @DatabaseField(canBeNull = true)
+    @DatabaseField
     private String direccion;
 
 }
